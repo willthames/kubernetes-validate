@@ -1,0 +1,3 @@
+[submodule "src/kubernetes_validate/kubernetes-json-schema"]
+	path = src/kubernetes_validate/kubernetes-json-schema
+	url = https://github.com/willthames/kubernetes-json-schema
