@@ -5,6 +5,7 @@ from __future__ import print_function
 import argparse
 import errno
 import sys
+import yaml
 
 import kubernetes_validate.utils as utils
 from kubernetes_validate.version import __version__
@@ -12,9 +13,8 @@ from kubernetes_validate.version import __version__
 
 def main():
     parser = argparse.ArgumentParser(description='validate a kubernetes resource definition')
-    parser.add_argument('-k', '--kubernetes-version',
-                        action='append', help='version of kubernetes against which to validate',
-                        default=utils.latest_version())
+    parser.add_argument('-k', '--kubernetes-version', action='append',
+                        help='version of kubernetes against which to validate. Defaults to %s' % utils.latest_version())
     parser.add_argument('--strict', action='store_true', default=False,
                         help='whether to use strict validation, rejecting unexpected properties')
     parser.add_argument('--version', action='version', version=__version__)
@@ -38,12 +38,12 @@ def main():
             raise SystemExit("Couldn't parse YAML from file %s: %s" % (filename, str(e)))
         f.close()
 
-        for version in args.k:
+        for version in args.kubernetes_version or [utils.latest_version()]:
             try:
                 utils.validate(data, version, args.strict)
-                print("INFO  %s passed against version %s: %s" % (filename, version))
+                print("INFO  %s passed against version %s" % (filename, version))
             except utils.ValidationError as e:
-                print("ERROR %s did not validate against version %s: %s" % (filename, version, str(e)))
+                print("ERROR %s did not validate against version %s: %s" % (filename, version, e.message))
                 rc = 1
     return rc
 
