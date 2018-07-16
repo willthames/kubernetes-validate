@@ -20,11 +20,16 @@ def latest_version():
 
 
 def validate(data, version, strict=False):
+    # strip initial v from version (I keep forgetting, so other people will too)
+    if version.startswith('v'):
+        version = version[1:]
     try:
-        schema_filename = 'v%s-local' % version
+        api_version = data['apiVersion'].replace('/', '-')
+        schema_dir = 'v%s-local' % version
         if strict:
-            schema_filename += '-strict'
-        schema_file = pkg_resources.resource_filename('kubernetes_validate', '/kubernetes-json-schema/%s/%s.json' % (schema_filename, data['kind'].lower()))
+            schema_dir += '-strict'
+        schema_file = pkg_resources.resource_filename('kubernetes_validate', '/kubernetes-json-schema/%s/%s-%s.json' %
+                                                      (schema_dir, data['kind'].lower(), api_version))
 
         with open(schema_file) as f:
             schema = json.load(f)

@@ -43,7 +43,8 @@ def main():
                 utils.validate(data, version, args.strict)
                 print("INFO  %s passed against version %s" % (filename, version))
             except utils.ValidationError as e:
-                print("ERROR %s did not validate against version %s: %s" % (filename, version, e.message))
+                print("ERROR %s did not validate against version %s: %s: %s" %
+                      (filename, version, '.'.join([str(item) for item in e.path]), e.message))
                 rc = 1
     return rc
 
