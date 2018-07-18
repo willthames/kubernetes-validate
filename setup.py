@@ -17,7 +17,7 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     package_data={
-        '': ['kubernetes-json-schema/*-local/*.json', 'kubernetes-json-schema/local-strict/*.json']
+        '': ['kubernetes-json-schema/*-local/*.json', 'kubernetes-json-schema/*-local-strict/*.json']
     },
     zip_safe=False,
     install_requires=['PyYAML', 'jsonschema'],
