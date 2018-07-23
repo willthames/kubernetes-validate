@@ -6,7 +6,6 @@ import jsonschema
 import os
 import pkg_resources
 import re
-import yaml
 
 
 ValidationError = jsonschema.ValidationError
@@ -34,7 +33,7 @@ def validate(data, version, strict=False):
         with open(schema_file) as f:
             schema = json.load(f)
         schema_dir = os.path.dirname(os.path.abspath(schema_file))
-        resolver = jsonschema.RefResolver(base_uri = 'file://' + schema_dir + '/', referrer = schema)
+        resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir + '/', referrer=schema)
         jsonschema.validate(data, schema, resolver=resolver)
-    except jsonschema.ValidationError as e:
+    except jsonschema.ValidationError:
         raise
