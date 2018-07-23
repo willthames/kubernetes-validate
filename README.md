@@ -21,6 +21,10 @@ If the relevant PRs get accepted upstream, then this will revert to the upstream
 
 pip install kubernetes-validate
 
+*Note:* This package is *HUGE*, even though it's very much cut down from kubernetes-json-schema.
+It will take up about 300MB on disk. I will look at reducing that by deduplicating schema files if possible.
+Any suggestions that would reduce disk usage and package size would be gratefully received!
+
 ## Usage
 
 ### Command line
