@@ -11,17 +11,22 @@ import re
 ValidationError = jsonschema.ValidationError
 
 
-def latest_version():
+def all_versions():
     schemas = pkg_resources.resource_listdir('kubernetes_validate', '/kubernetes-json-schema')
     version_regex = re.compile(r'^v([^-]*).*')
-    versions = sorted([LooseVersion(version_regex.sub(r"\1", schema)) for schema in schemas if version_regex.match(schema)])
-    return versions[-1]
+    return sorted([LooseVersion(version_regex.sub(r"\1", schema)) for schema in schemas if version_regex.match(schema)])
 
 
-def validate(data, version, strict=False):
+def latest_version():
+    return all_versions()[-1]
+
+
+def validate(data, desired_version, strict=False):
     # strip initial v from version (I keep forgetting, so other people will too)
-    if version.startswith('v'):
-        version = version[1:]
+    if desired_version.startswith('v'):
+        desired_version = desired_version[1:]
+    # actual schema version is the latest version that is not newer than the desired version
+    version = [version for version in all_versions() if version <= LooseVersion(desired_version)][-1]
     try:
         api_version = data['apiVersion'].replace('/', '-')
         schema_dir = 'v%s-local' % version
