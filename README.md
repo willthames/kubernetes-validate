@@ -15,15 +15,15 @@ Note that this currently uses a fork of kubernetes-json-schema for the following
 * Reduce Kubernetes version support (v1.5 and v1.6 schemas are not included to reduce
   library size and schema build time)
 
+Furthermore, the module now includes only the .0 API schemas, as they change so little within a Kubernetes
+version (there are some differences but they seem to be mostly irrelevant to validation - e.g. description
+updates). This has taken the module down from 300MB to less than 30MB.
+
 If the relevant PRs get accepted upstream, then this will revert to the upstream fork.
 
 ## Installation
 
 pip install kubernetes-validate
-
-*Note:* This package is *HUGE*, even though it's very much cut down from kubernetes-json-schema.
-It will take up about 300MB on disk. I will look at reducing that by deduplicating schema files if possible.
-Any suggestions that would reduce disk usage and package size would be gratefully received!
 
 ## Usage
 
