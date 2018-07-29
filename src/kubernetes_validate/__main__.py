@@ -46,6 +46,9 @@ def main():
                 print("ERROR %s did not validate against version %s: %s: %s" %
                       (filename, version, '.'.join([str(item) for item in e.path]), e.message))
                 rc = 1
+            except (utils.SchemaNotFoundError, utils.InvalidSchemaError) as e:
+                print("ERROR %s" % e.message)
+                rc = 2
     return rc
 
 

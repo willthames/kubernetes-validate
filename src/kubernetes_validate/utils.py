@@ -11,6 +11,19 @@ import re
 ValidationError = jsonschema.ValidationError
 
 
+class SchemaNotFoundError(Exception):
+    def __init__(self, kind, version, api_version):
+        self.kind = kind
+        self.version = version
+        self.api_version = api_version
+        self.message = "Couldn't find schema for kind %s with api version %s for kubernetes version %s" % (self.kind, self.api_version, self.version)
+
+
+class InvalidSchemaError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+
 def all_versions():
     schemas = pkg_resources.resource_listdir('kubernetes_validate', '/kubernetes-json-schema')
     version_regex = re.compile(r'^v([^-]*).*')
@@ -27,18 +40,27 @@ def validate(data, desired_version, strict=False):
         desired_version = desired_version[1:]
     # actual schema version is the latest version that is not newer than the desired version
     version = [version for version in all_versions() if version <= LooseVersion(desired_version)][-1]
-    try:
-        api_version = data['apiVersion'].replace('/', '-')
-        schema_dir = 'v%s-local' % version
-        if strict:
-            schema_dir += '-strict'
-        schema_file = pkg_resources.resource_filename('kubernetes_validate', '/kubernetes-json-schema/%s/%s-%s.json' %
-                                                      (schema_dir, data['kind'].lower(), api_version))
+    api_version = data['apiVersion'].replace('/', '-')
+    schema_dir = 'v%s-local' % version
+    if strict:
+        schema_dir += '-strict'
+    schema_file = pkg_resources.resource_filename('kubernetes_validate', '/kubernetes-json-schema/%s/%s-%s.json' %
+                                                  (schema_dir, data['kind'].lower(), api_version))
 
-        with open(schema_file) as f:
-            schema = json.load(f)
-        schema_dir = os.path.dirname(os.path.abspath(schema_file))
-        resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir + '/', referrer=schema)
+    try:
+        f = open(schema_file)
+    except IOError:
+        raise SchemaNotFoundError(version=desired_version, kind=data['kind'], api_version=data['apiVersion'])
+    try:
+        schema = json.load(f)
+    except json.JsonDecodeError:
+        raise InvalidSchemaError("Couldn't parse schema %s" % schema_file)
+    finally:
+        f.close()
+    schema_dir = os.path.dirname(os.path.abspath(schema_file))
+    resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir + '/', referrer=schema)
+
+    try:
         jsonschema.validate(data, schema, resolver=resolver)
     except jsonschema.ValidationError:
         raise
