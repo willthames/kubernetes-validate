@@ -1,6 +1,13 @@
 {
+  "additionalProperties": false, 
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
   "description": "DEPRECATED.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.RollbackConfig"
+  "properties": {
+    "revision": {
+      "type": "integer", 
+      "description": "The revision to rollback to. If set to 0, rollback to the last revision.", 
+      "format": "int64"
+    }
+  }
 }

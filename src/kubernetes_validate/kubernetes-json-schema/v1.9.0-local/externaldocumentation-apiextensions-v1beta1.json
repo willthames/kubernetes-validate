@@ -2,5 +2,18 @@
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
   "description": "ExternalDocumentation allows referencing an external resource for extended documentation.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation"
+  "properties": {
+    "url": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "description": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }
+  }
 }

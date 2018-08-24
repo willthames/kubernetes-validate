@@ -27,7 +27,7 @@ class InvalidSchemaError(Exception):
 def all_versions():
     schemas = pkg_resources.resource_listdir('kubernetes_validate', '/kubernetes-json-schema')
     version_regex = re.compile(r'^v([^-]*).*')
-    return sorted([LooseVersion(version_regex.sub(r"\1", schema)) for schema in schemas if version_regex.match(schema)])
+    return sorted([version_regex.sub(r"\1", schema) for schema in schemas if version_regex.match(schema)], key=LooseVersion)
 
 
 def latest_version():
@@ -40,7 +40,9 @@ def validate(data, desired_version, strict=False):
         desired_version = desired_version[1:]
     # actual schema version is the latest version that is not newer than the desired version
     version = [version for version in all_versions() if version <= LooseVersion(desired_version)][-1]
-    api_version = data['apiVersion'].replace('/', '-')
+    # Remove the trailing domain from the api version namespace and replace the / with -
+    # e.g. rbac.authorization.k8s.io/v1 -> rbac-v1
+    api_version = re.sub(r'^([^./]*)(?:\.[^/]*)?/', r'\1-', data['apiVersion'])
     schema_dir = 'v%s-local' % version
     if strict:
         schema_dir += '-strict'
@@ -58,9 +60,11 @@ def validate(data, desired_version, strict=False):
     finally:
         f.close()
     schema_dir = os.path.dirname(os.path.abspath(schema_file))
-    resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir + '/', referrer=schema)
+    resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir + '/_definitions.json', referrer=schema)
 
     try:
         jsonschema.validate(data, schema, resolver=resolver)
     except jsonschema.ValidationError:
+        raise
+    except jsonschema.exceptions.RefResolutionError as e:
         raise
