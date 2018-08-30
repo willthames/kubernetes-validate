@@ -1,13 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "properties": {
-    "namespace": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Namespace to evaluate rules for. Required."
-    }
-  }
+  "description": null, 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SelfSubjectRulesReviewSpec"
 }

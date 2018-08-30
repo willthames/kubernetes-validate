@@ -60,7 +60,7 @@ def validate(data, desired_version, strict=False):
     finally:
         f.close()
     schema_dir = os.path.dirname(os.path.abspath(schema_file))
-    resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir + '/_definitions.json', referrer=schema)
+    resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir + '/', referrer=schema)
 
     try:
         jsonschema.validate(data, schema, resolver=resolver)
