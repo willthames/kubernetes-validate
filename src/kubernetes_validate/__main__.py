@@ -14,7 +14,8 @@ from kubernetes_validate.version import __version__
 def main():
     parser = argparse.ArgumentParser(description='validate a kubernetes resource definition')
     parser.add_argument('-k', '--kubernetes-version', action='append',
-                        help='version of kubernetes against which to validate. Defaults to %s' % utils.latest_version())
+                        help='version of kubernetes against which to validate. Defaults to %s' %
+                        utils.latest_version())
     parser.add_argument('--strict', action='store_true', default=False,
                         help='whether to use strict validation, rejecting unexpected properties')
     parser.add_argument('--version', action='version', version=__version__)

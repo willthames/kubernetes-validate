@@ -16,7 +16,8 @@ class SchemaNotFoundError(Exception):
         self.kind = kind
         self.version = version
         self.api_version = api_version
-        self.message = "Couldn't find schema for kind %s with api version %s for kubernetes version %s" % (self.kind, self.api_version, self.version)
+        self.message = ("Couldn't find schema for kind %s with api version %s for kubernetes version %s" %
+                        (self.kind, self.api_version, self.version))
 
 
 class InvalidSchemaError(Exception):
@@ -27,7 +28,8 @@ class InvalidSchemaError(Exception):
 def all_versions():
     schemas = pkg_resources.resource_listdir('kubernetes_validate', '/kubernetes-json-schema')
     version_regex = re.compile(r'^v([^-]*).*')
-    return sorted([version_regex.sub(r"\1", schema) for schema in schemas if version_regex.match(schema)], key=LooseVersion)
+    return sorted([version_regex.sub(r"\1", schema) for schema in schemas if version_regex.match(schema)],
+                  key=LooseVersion)
 
 
 def latest_version():
@@ -46,7 +48,8 @@ def validate(data, desired_version, strict=False):
     schema_dir = 'v%s-local' % version
     if strict:
         schema_dir += '-strict'
-    schema_file = pkg_resources.resource_filename('kubernetes_validate', '/kubernetes-json-schema/%s/%s-%s.json' %
+    schema_file = pkg_resources.resource_filename('kubernetes_validate',
+                                                  '/kubernetes-json-schema/%s/%s-%s.json' %
                                                   (schema_dir, data['kind'].lower(), api_version))
 
     try:
@@ -66,5 +69,5 @@ def validate(data, desired_version, strict=False):
         jsonschema.validate(data, schema, resolver=resolver)
     except jsonschema.ValidationError:
         raise
-    except jsonschema.exceptions.RefResolutionError as e:
+    except jsonschema.exceptions.RefResolutionError:
         raise
