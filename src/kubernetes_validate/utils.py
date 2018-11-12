@@ -20,6 +20,12 @@ class SchemaNotFoundError(Exception):
                         (self.kind, self.api_version, self.version))
 
 
+class VersionNotSupportedError(Exception):
+    def __init__(self, version):
+        self.version = version
+        self.message = ("kubernetes-validate does not support version %s" % self.version)
+
+
 class InvalidSchemaError(Exception):
     def __init__(self, message):
         self.message = message
@@ -55,6 +61,8 @@ def validate(data, desired_version, strict=False):
     try:
         f = open(schema_file)
     except IOError:
+        if not os.path.exists(os.path.dirname(schema_file)):
+            raise VersionNotSupportedError(version=desired_version)
         raise SchemaNotFoundError(version=desired_version, kind=data['kind'], api_version=data['apiVersion'])
     try:
         schema = json.load(f)
