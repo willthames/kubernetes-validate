@@ -43,7 +43,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -k KUBERNETES_VERSION, --kubernetes-version KUBERNETES_VERSION
                         version of kubernetes against which to validate.
-                        Defaults to 1.11.0
+                        Defaults to 1.16.0
   --strict              whether to use strict validation, rejecting unexpected
                         properties
   --version             show program's version number and exit
@@ -52,7 +52,7 @@ optional arguments:
 e.g.
 
 ```
-$ kubernetes-validate -k 1.9.9 --strict resource.yml
+$ kubernetes-validate -k 1.16.1 --strict resource.yml
 ```
 
 ### Python
@@ -64,7 +64,7 @@ import yaml
 
 try:
     data = yaml.load(open('resource.yaml').read())
-    kubernetes_validate.validate(data, '1.9.9', strict=True)
+    kubernetes_validate.validate(data, '1.16.1', strict=True)
 except kubernetes_validate.ValidationError as e:
     print(''. join(e.path), e.message)
 ```
@@ -72,17 +72,17 @@ except kubernetes_validate.ValidationError as e:
 ### Examples
 
 ```
-$ kubernetes-validate -k 1.9.9 examples/kuard-extra-property.yaml
-INFO  examples/kuard-extra-property.yaml passed against version 1.9.9
+$ kubernetes-validate -k 1.13.6 examples/kuard-extra-property.yaml
+INFO  examples/kuard-extra-property.yaml passed against version 1.13.6
 ```
 
 ```
 $ kubernetes-validate --strict examples/kuard-extra-property.yaml
-ERROR examples/kuard-extra-property.yaml did not validate against version 1.11.0: spec.selector: Additional properties are not allowed ('unwanted' was unexpected)
+ERROR examples/kuard-extra-property.yaml did not validate against version 1.16.0: spec.selector: Additional properties are not allowed ('unwanted' was unexpected)
 ```
 
 ```
 $ kubernetes-validate examples/kuard-invalid-type.yaml
-ERROR examples/kuard-invalid-type.yaml did not validate against version 1.11.0: spec.replicas: 'hello' is not of type u'integer'
+ERROR examples/kuard-invalid-type.yaml did not validate against version 1.16.0: spec.replicas: 'hello' is not of type u'integer'
 ```
 
