@@ -39,7 +39,7 @@ def main():
             raise SystemExit("Couldn't open file %s for reading: %s" % (filename, str(e)))
         try:
             # ignore empty yaml blocks
-            data = [item for item in yaml.load_all(f.read()) if item]
+            data = [item for item in yaml.load_all(f.read(), Loader=yaml.SafeLoader) if item]
         except Exception as e:
             raise SystemExit("Couldn't parse YAML from file %s: %s" % (filename, str(e)))
         f.close()
