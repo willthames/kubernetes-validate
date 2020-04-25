@@ -48,12 +48,15 @@ def main():
             for resource in data:
                 try:
                     utils.validate(resource, version, args.strict)
-                    print("INFO %s passed for resource %s against version %s" % (filename, kn(resource), version))
+                    print("INFO %s passed for resource %s against version %s" %
+                          (filename, kn(resource), version))
                 except utils.ValidationError as e:
                     print("ERROR %s did not validate for resource %s against version %s: %s: %s" %
-                          (filename, kn(resource), version, '.'.join([str(item) for item in e.path]), e.message))
+                          (filename, kn(resource), version, '.'.join([str(item) for item in e.path]),
+                           e.message))
                     rc = 1
-                except (utils.SchemaNotFoundError, utils.InvalidSchemaError, utils.VersionNotSupportedError) as e:
+                except (utils.SchemaNotFoundError, utils.InvalidSchemaError,
+                        utils.VersionNotSupportedError) as e:
                     print("ERROR %s" % e.message)
                     rc = 2
     return rc
