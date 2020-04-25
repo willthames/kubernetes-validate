@@ -11,6 +11,10 @@ import kubernetes_validate.utils as utils
 from kubernetes_validate.version import __version__
 
 
+def kn(resource):
+    return "%s/%s" % (resource["kind"].lower(), resource["metadata"]["name"])
+
+
 def main():
     parser = argparse.ArgumentParser(description='validate a kubernetes resource definition')
     parser.add_argument('-k', '--kubernetes-version', action='append',
@@ -34,22 +38,27 @@ def main():
         except Exception as e:
             raise SystemExit("Couldn't open file %s for reading: %s" % (filename, str(e)))
         try:
-            data = yaml.load(f.read())
+            # ignore empty yaml blocks
+            data = [item for item in yaml.load_all(f.read(), Loader=yaml.SafeLoader) if item]
         except Exception as e:
             raise SystemExit("Couldn't parse YAML from file %s: %s" % (filename, str(e)))
         f.close()
 
         for version in args.kubernetes_version or [utils.latest_version()]:
-            try:
-                utils.validate(data, version, args.strict)
-                print("INFO  %s passed against version %s" % (filename, version))
-            except utils.ValidationError as e:
-                print("ERROR %s did not validate against version %s: %s: %s" %
-                      (filename, version, '.'.join([str(item) for item in e.path]), e.message))
-                rc = 1
-            except (utils.SchemaNotFoundError, utils.InvalidSchemaError, utils.VersionNotSupportedError) as e:
-                print("ERROR %s" % e.message)
-                rc = 2
+            for resource in data:
+                try:
+                    utils.validate(resource, version, args.strict)
+                    print("INFO %s passed for resource %s against version %s" %
+                          (filename, kn(resource), version))
+                except utils.ValidationError as e:
+                    print("ERROR %s did not validate for resource %s against version %s: %s: %s" %
+                          (filename, kn(resource), version, '.'.join([str(item) for item in e.path]),
+                           e.message))
+                    rc = 1
+                except (utils.SchemaNotFoundError, utils.InvalidSchemaError,
+                        utils.VersionNotSupportedError) as e:
+                    print("ERROR %s" % e.message)
+                    rc = 2
     return rc
 
 
