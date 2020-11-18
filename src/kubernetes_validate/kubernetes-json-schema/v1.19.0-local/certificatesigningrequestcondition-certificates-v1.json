@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "CertificateSigningRequestCondition describes a condition of a CertificateSigningRequest object", 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.certificates.v1.CertificateSigningRequestCondition"
+}
