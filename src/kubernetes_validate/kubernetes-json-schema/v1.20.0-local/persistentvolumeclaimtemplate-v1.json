@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PersistentVolumeClaimTemplate is used to produce PersistentVolumeClaim objects as part of an EphemeralVolumeSource.", 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimTemplate"
+}
