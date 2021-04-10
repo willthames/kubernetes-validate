@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "ForZone provides information about which zones should consume this endpoint.", 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1beta1.ForZone"
+}

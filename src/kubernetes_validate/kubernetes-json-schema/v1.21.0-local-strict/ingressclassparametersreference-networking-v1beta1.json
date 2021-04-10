@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "IngressClassParametersReference identifies an API object. This can be used to specify a cluster or namespace-scoped resource.", 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1beta1.IngressClassParametersReference"
+}
