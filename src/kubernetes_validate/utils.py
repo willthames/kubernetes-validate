@@ -88,7 +88,7 @@ def validate(data, desired_version, strict=False):
     finally:
         f.close()
     schema_dir = os.path.dirname(os.path.abspath(schema_file))
-    resolver = jsonschema.RefResolver(base_uri='file:///' + schema_dir.replace("\\", "/") + '/',
+    resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir.replace("\\", "/") + '/',
                                       referrer=schema)
 
     try:
