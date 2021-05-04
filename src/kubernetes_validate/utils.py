@@ -4,6 +4,7 @@ from distutils.version import LooseVersion
 import json
 import jsonschema
 import os
+import platform
 import pkg_resources
 import re
 import sys
@@ -88,7 +89,12 @@ def validate(data, desired_version, strict=False):
     finally:
         f.close()
     schema_dir = os.path.dirname(os.path.abspath(schema_file))
-    resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir.replace("\\", "/") + '/',
+
+    uri_prefix = "file://"
+    if platform.system() == 'Windows':
+        uri_prefix += "/"
+
+    resolver = jsonschema.RefResolver(base_uri=uri_prefix + schema_dir.replace("\\", "/") + '/',
                                       referrer=schema)
 
     try:
