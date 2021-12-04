@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.", 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.UncountedTerminatedPods"
+}

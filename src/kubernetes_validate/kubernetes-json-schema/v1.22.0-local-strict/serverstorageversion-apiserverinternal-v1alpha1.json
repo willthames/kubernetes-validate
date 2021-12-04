@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "An API server instance reports the version it can decode and the version it encodes objects to when persisting objects in the backend.", 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.apiserverinternal.v1alpha1.ServerStorageVersion"
+}
