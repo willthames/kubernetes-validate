@@ -38,6 +38,11 @@ def all_versions():
                   key=LooseVersion)
 
 
+def major_minor(version):
+    version_regex = re.compile(r'^(\d+\.\d+).*')
+    return version_regex.sub(r"\1", version)
+
+
 def latest_version():
     return all_versions()[-1]
 
@@ -46,8 +51,10 @@ def validate(data, desired_version, strict=False):
     # strip initial v from version (I keep forgetting, so other people will too)
     if desired_version.startswith('v'):
         desired_version = desired_version[1:]
+    if major_minor(desired_version) > latest_version():
+        raise VersionNotSupportedError(version=desired_version)
     # actual schema version is the latest version that is not newer than the desired version
-    version = [version for version in all_versions() if version <= LooseVersion(desired_version)][-1]
+    version = [version for version in all_versions() if version <= major_minor(desired_version)][-1]
     # Remove the trailing domain from the api version namespace and replace the / with -
     # e.g. rbac.authorization.k8s.io/v1 -> rbac-v1
     api_version = re.sub(r'^([^./]*)(?:\.[^/]*)?/', r'\1-', data['apiVersion'])
