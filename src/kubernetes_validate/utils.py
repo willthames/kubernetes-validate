@@ -8,7 +8,11 @@ import pkg_resources
 import re
 
 
-ValidationError = jsonschema.ValidationError
+class ValidationError(jsonschema.ValidationError):
+    def __init__(self, caught, version):
+        self.version = version
+        for attr, value in caught.__dict__.items():
+            self.__dict__[attr] = value
 
 
 class SchemaNotFoundError(Exception):
@@ -52,9 +56,9 @@ def validate(data, desired_version, strict=False):
     if desired_version.startswith('v'):
         desired_version = desired_version[1:]
     if major_minor(desired_version) > latest_version():
-        raise VersionNotSupportedError(version=desired_version)
+        raise VersionNotSupportedError(version=major_minor(desired_version))
     # actual schema version is the latest version that is not newer than the desired version
-    version = [version for version in all_versions() if version <= major_minor(desired_version)][-1]
+    version = [version for version in all_versions() if major_minor(version) <= major_minor(desired_version)][-1]
     # Remove the trailing domain from the api version namespace and replace the / with -
     # e.g. rbac.authorization.k8s.io/v1 -> rbac-v1
     api_version = re.sub(r'^([^./]*)(?:\.[^/]*)?/', r'\1-', data['apiVersion'])
@@ -70,7 +74,7 @@ def validate(data, desired_version, strict=False):
     except IOError:
         if not os.path.exists(os.path.dirname(schema_file)):
             raise VersionNotSupportedError(version=desired_version)
-        raise SchemaNotFoundError(version=desired_version, kind=data['kind'], api_version=data['apiVersion'])
+        raise SchemaNotFoundError(version=major_minor(desired_version), kind=data['kind'], api_version=data['apiVersion'])
     try:
         schema = json.load(f)
     except json.JsonDecodeError:
@@ -82,7 +86,8 @@ def validate(data, desired_version, strict=False):
 
     try:
         jsonschema.validate(data, schema, resolver=resolver)
-    except jsonschema.ValidationError:
-        raise
+        return major_minor(version)
+    except jsonschema.ValidationError as e:
+        raise ValidationError(e, version=major_minor(version))
     except jsonschema.exceptions.RefResolutionError:
         raise

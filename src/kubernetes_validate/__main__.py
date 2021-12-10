@@ -49,13 +49,13 @@ def main():
         for version in args.kubernetes_version or [utils.latest_version()]:
             for resource in data:
                 try:
-                    utils.validate(resource, version, args.strict)
+                    validated_version = utils.validate(resource, version, args.strict)
                     if not args.quiet:
                         print("INFO %s passed for resource %s against version %s" %
-                              (filename, kn(resource), version))
+                              (filename, kn(resource), validated_version))
                 except utils.ValidationError as e:
                     print("ERROR %s did not validate for resource %s against version %s: %s: %s" %
-                          (filename, kn(resource), version, '.'.join([str(item) for item in e.path]),
+                          (filename, kn(resource), e.version, '.'.join([str(item) for item in e.path]),
                            e.message))
                     rc = 1
                 except (utils.SchemaNotFoundError, utils.InvalidSchemaError) as e:

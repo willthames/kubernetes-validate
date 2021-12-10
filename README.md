@@ -43,16 +43,20 @@ optional arguments:
   -h, --help            show this help message and exit
   -k KUBERNETES_VERSION, --kubernetes-version KUBERNETES_VERSION
                         version of kubernetes against which to validate.
-                        Defaults to 1.16.0
+                        Defaults to major/minor version of kubernetes-validate
+                        (i.e. 1.22.1 supports kubernetes 1.22). Patch versions
+                        of the version are ignored (1.22.4 validates against
+                        1.22.0)
   --strict              whether to use strict validation, rejecting unexpected
                         properties
+  --quiet               silences successful resources being displayed
   --version             show program's version number and exit
 ```
 
 e.g.
 
 ```
-$ kubernetes-validate -k 1.16.1 --strict resource.yml
+$ kubernetes-validate -k 1.20 --strict resource.yml
 ```
 
 ### Python
@@ -64,7 +68,7 @@ import yaml
 
 try:
     data = yaml.load(open('resource.yaml').read())
-    kubernetes_validate.validate(data, '1.16.1', strict=True)
+    kubernetes_validate.validate(data, '1.22', strict=True)
 except kubernetes_validate.ValidationError as e:
     print(''. join(e.path), e.message)
 ```
