@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1alpha1.CSIStorageCapacityList",
+  "description": "CSIStorageCapacityList is a collection of CSIStorageCapacity objects.",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar",
+  "description": "EnvVar represents an environment variable present in a Container.",
+  "type": "object"
+}

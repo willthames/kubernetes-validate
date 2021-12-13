@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerCondition",
+  "description": "ReplicationControllerCondition describes the state of a replication controller at a certain point.",
+  "type": "object"
+}

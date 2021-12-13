@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta2.CrossVersionObjectReference",
+  "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
+  "type": "object"
+}

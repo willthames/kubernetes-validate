@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.IngressBackend",
+  "description": "IngressBackend describes all endpoints for a given service and port.",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.apiserverinternal.v1alpha1.StorageVersion",
+  "description": "\n Storage version of a specific resource.",
+  "type": "object"
+}

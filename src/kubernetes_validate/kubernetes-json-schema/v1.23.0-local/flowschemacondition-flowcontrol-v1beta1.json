@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta1.FlowSchemaCondition",
+  "description": "FlowSchemaCondition describes conditions for a FlowSchema.",
+  "type": "object"
+}

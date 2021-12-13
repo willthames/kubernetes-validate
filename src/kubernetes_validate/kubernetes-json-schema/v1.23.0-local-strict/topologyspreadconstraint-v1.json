@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint",
+  "description": "TopologySpreadConstraint specifies how to spread matching pods among the given topology.",
+  "type": "object"
+}

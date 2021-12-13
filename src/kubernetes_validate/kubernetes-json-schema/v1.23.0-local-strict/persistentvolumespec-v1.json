@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeSpec",
+  "description": "PersistentVolumeSpec is the specification of a persistent volume.",
+  "type": "object"
+}
