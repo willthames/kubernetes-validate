@@ -15,6 +15,16 @@ def kn(resource):
     return "%s/%s" % (resource["kind"].lower(), resource["metadata"]["name"])
 
 
+def construct_value(load, node):
+    if not isinstance(node, yaml.ScalarNode):
+        raise yaml.constructor.ConstructorError(
+            "while constructing a value",
+            node.start_mark,
+            "expected a scalar, but found %s" % node.id, node.start_mark
+        )
+    yield str(node.value)
+
+
 def main():
     parser = argparse.ArgumentParser(description='validate a kubernetes resource definition')
     parser.add_argument('-k', '--kubernetes-version', action='append',
@@ -33,12 +43,19 @@ def main():
         parser.print_help()
         return 0
 
+    # Handle nodes that start with '='
+    # See https://github.com/yaml/pyyaml/issues/89
+    yaml.SafeLoader.add_constructor(u'tag:yaml.org,2002:value', construct_value)
+
     rc = 0
     for filename in args.filenames:
-        try:
-            f = open(filename)
-        except Exception as e:
-            raise SystemExit("Couldn't open file %s for reading: %s" % (filename, str(e)))
+        if filename == "-":
+            f = sys.stdin
+        else:
+            try:
+                f = open(filename)
+            except Exception as e:
+                raise SystemExit("Couldn't open file %s for reading: %s" % (filename, str(e)))
         try:
             # ignore empty yaml blocks
             data = [item for item in yaml.load_all(f.read(), Loader=yaml.SafeLoader) if item]
