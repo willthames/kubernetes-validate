@@ -33,7 +33,9 @@ def main():
     parser.add_argument('--strict', action='store_true', default=False,
                         help='whether to use strict validation, rejecting unexpected properties')
     parser.add_argument('--quiet', action='store_true', default=False,
-                        help='whether to only output failures')
+                        help='whether to only output warnings/failures')
+    parser.add_argument('--no-warn', action='store_true', default=False,
+                        help='whether to hide warnings')
     parser.add_argument('--version', action='version', version=__version__)
     parser.add_argument('filenames', nargs=argparse.REMAINDER)
 
@@ -76,7 +78,8 @@ def main():
                            e.message))
                     rc = 1
                 except (utils.SchemaNotFoundError, utils.InvalidSchemaError) as e:
-                    print("WARN %s" % e.message)
+                    if not args.no_warn:
+                        print("WARN %s" % e.message)
                 except utils.VersionNotSupportedError as e:
                     print(f"FATAL kubernetes-validate {__version__} does not support kubernetes version {version}")
                     return 2
