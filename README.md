@@ -49,7 +49,8 @@ optional arguments:
                         1.22.0)
   --strict              whether to use strict validation, rejecting unexpected
                         properties
-  --quiet               silences successful resources being displayed
+  --quiet               whether to only output warnings/failures
+  --no-warn             whether to hide warnings
   --version             show program's version number and exit
 ```
 
