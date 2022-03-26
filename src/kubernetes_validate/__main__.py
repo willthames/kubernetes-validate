@@ -57,12 +57,12 @@ def main():
             try:
                 f = open(filename)
             except Exception as e:
-                raise SystemExit("Couldn't open file %s for reading: %s" % (filename, str(e)))
+                raise SystemExit(f"Couldn't open file {filename} for reading: {str(e)}")
         try:
             # ignore empty yaml blocks
             data = [item for item in yaml.load_all(f.read(), Loader=yaml.SafeLoader) if item]
         except Exception as e:
-            raise SystemExit("Couldn't parse YAML from file %s: %s" % (filename, str(e)))
+            raise SystemExit(f"Couldn't parse YAML from file {filename}: {str(e)}")
         f.close()
 
         for version in args.kubernetes_version or [utils.latest_version()]:
@@ -70,19 +70,23 @@ def main():
                 try:
                     validated_version = utils.validate(resource, version, args.strict)
                     if not args.quiet:
-                        print("INFO %s passed for resource %s against version %s" %
-                              (filename, kn(resource), validated_version))
+                        print(f"INFO {filename} passed for resource {kn(resource)} against version "
+                              f"{validated_version}")
                 except utils.ValidationError as e:
-                    print("ERROR %s did not validate for resource %s against version %s: %s: %s" %
-                          (filename, kn(resource), e.version, '.'.join([str(item) for item in e.path]),
-                           e.message))
-                    rc = 1
+                    path = '.'.join([str(item) for item in e.path])
+                    print(f"ERROR {filename} did not validate for resource {kn(resource)} against version "
+                          f"{e.version}: {path}: {e.message}")
+                    rc |= 1
                 except (utils.SchemaNotFoundError, utils.InvalidSchemaError) as e:
                     if not args.no_warn:
-                        print("WARN %s" % e.message)
-                except utils.VersionNotSupportedError as e:
-                    print(f"FATAL kubernetes-validate {__version__} does not support kubernetes version {version}")
+                        print(f"WARN {filename} {e.message}")
+                except utils.VersionNotSupportedError:
+                    print(f"FATAL kubernetes-validate {__version__} does not support kubernetes version "
+                          f"{version}")
                     return 2
+                except Exception as e:
+                    print(f"ERROR {filename} could not be validated: {str(e)}")
+                    rc |= 2
     return rc
 
 

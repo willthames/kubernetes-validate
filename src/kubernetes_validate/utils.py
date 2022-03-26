@@ -58,7 +58,8 @@ def validate(data, desired_version, strict=False):
     if major_minor(desired_version) > latest_version():
         raise VersionNotSupportedError(version=major_minor(desired_version))
     # actual schema version is the latest version that is not newer than the desired version
-    version = [version for version in all_versions() if major_minor(version) <= major_minor(desired_version)][-1]
+    version = [version for version in all_versions()
+               if major_minor(version) <= major_minor(desired_version)][-1]
     # Remove the trailing domain from the api version namespace and replace the / with -
     # e.g. rbac.authorization.k8s.io/v1 -> rbac-v1
     api_version = re.sub(r'^([^./]*)(?:\.[^/]*)?/', r'\1-', data['apiVersion'])
@@ -74,7 +75,8 @@ def validate(data, desired_version, strict=False):
     except IOError:
         if not os.path.exists(os.path.dirname(schema_file)):
             raise VersionNotSupportedError(version=desired_version)
-        raise SchemaNotFoundError(version=major_minor(desired_version), kind=data['kind'], api_version=data['apiVersion'])
+        raise SchemaNotFoundError(version=major_minor(desired_version), kind=data['kind'],
+                                  api_version=data['apiVersion'])
     try:
         schema = json.load(f)
     except json.JsonDecodeError:
@@ -82,7 +84,8 @@ def validate(data, desired_version, strict=False):
     finally:
         f.close()
     schema_dir = os.path.dirname(os.path.abspath(schema_file))
-    resolver = jsonschema.RefResolver(base_uri='file:///' + schema_dir.replace("\\", "/") + '/', referrer=schema)
+    resolver = jsonschema.RefResolver(base_uri='file:///' + schema_dir.replace("\\", "/") + '/',
+                                      referrer=schema)
 
     try:
         jsonschema.validate(data, schema, resolver=resolver)
