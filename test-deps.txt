@@ -1,5 +1,5 @@
 flake8
-nose
+pytest
 pep8-naming
 tox
 wheel
