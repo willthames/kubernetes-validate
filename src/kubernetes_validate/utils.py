@@ -108,22 +108,22 @@ def validate_resource(resource, filename, version, strict, quiet, no_warn):
     try:
         validated_version = validate(resource, version, strict)
         if not quiet:
-            print(f"INFO {filename} passed for resource {kn(resource)} against version "
-                  f"{validated_version}")
+            print("INFO %s passed for resource %s against version %s" %
+                  (filename, kn(resource), validated_version))
     except ValidationError as e:
         path = '.'.join([str(item) for item in e.path])
-        print(f"ERROR {filename} did not validate for resource {kn(resource)} against version "
-              f"{e.version}: {path}: {e.message}")
+        print("ERROR %s did not validate for resource %s against version %s: %s: %s" %
+              (filename, kn(resource), e.version, path, e.message))
         return 1
     except (SchemaNotFoundError, InvalidSchemaError) as e:
         if not no_warn:
-            print(f"WARN {filename} {e.message}")
+            print("WARN %s %s" % (filename, e.message))
     except VersionNotSupportedError:
-        print(f"FATAL kubernetes-validate {__version__} does not support kubernetes version "
-              f"{version}")
+        print("FATAL kubernetes-validate %s does not support kubernetes version %s" %
+              (__version__, version))
         return 2
     except Exception as e:
-        print(f"ERROR {filename} could not be validated: {str(e)}")
+        print("ERROR %s could not be validated: %s" % (filename, str(e)))
         return 2
     return 0
 
@@ -149,12 +149,12 @@ def resources_from_file(filename):
         try:
             f = open(filename)
         except Exception as e:
-            raise SystemExit(f"Couldn't open file {filename} for reading: {str(e)}")
+            raise SystemExit("Couldn't open file %s for reading: %s" % (filename, str(e)))
     try:
         # ignore empty yaml blocks
         data = [item for item in yaml.load_all(f.read(), Loader=yaml.SafeLoader) if item]
     except Exception as e:
-        raise SystemExit(f"Couldn't parse YAML from file {filename}: {str(e)}")
+        raise SystemExit("Couldn't parse YAML from file %s: %s" % (filename, str(e)))
     f.close()
 
     return data
