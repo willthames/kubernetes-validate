@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.IngressServiceBackend",
+  "description": "IngressServiceBackend references a Kubernetes Service as a Backend.",
+  "type": "object"
+}

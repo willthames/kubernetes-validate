@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.UserSubject",
+  "description": "UserSubject holds detailed information for user-kind subject.",
+  "type": "object"
+}

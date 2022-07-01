@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.JobSpec",
+  "description": "JobSpec describes how the job execution will look like.",
+  "type": "object"
+}

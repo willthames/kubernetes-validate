@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1.EndpointHints",
+  "description": "EndpointHints provides hints describing how an endpoint should be consumed.",
+  "type": "object"
+}

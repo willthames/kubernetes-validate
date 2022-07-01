@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.JobList",
+  "description": "JobList is a collection of jobs.",
+  "type": "object"
+}

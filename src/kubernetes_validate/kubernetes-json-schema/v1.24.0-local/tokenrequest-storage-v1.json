@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.TokenRequest",
+  "description": "TokenRequest contains parameters of a service account token.",
+  "type": "object"
+}
