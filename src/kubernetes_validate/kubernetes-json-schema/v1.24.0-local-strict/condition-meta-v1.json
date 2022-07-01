@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition",
+  "description": "Condition contains details for one aspect of the current state of this API Resource.",
+  "type": "object"
+}
