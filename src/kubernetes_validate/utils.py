@@ -1,27 +1,29 @@
 from __future__ import print_function
 
-from distutils.version import LooseVersion
 import json
-import jsonschema
 import os
 import platform
-import pkg_resources
 import re
 import sys
+from distutils.version import LooseVersion
+from typing import Dict, Generator, List
+
+import jsonschema
+import pkg_resources
 import yaml
 
 from kubernetes_validate.version import __version__
 
 
 class ValidationError(jsonschema.ValidationError):
-    def __init__(self, caught, version):
+    def __init__(self, caught: Exception, version: str):
         self.version = version
         for attr, value in caught.__dict__.items():
             self.__dict__[attr] = value
 
 
 class SchemaNotFoundError(Exception):
-    def __init__(self, kind, version, api_version):
+    def __init__(self, kind: str, version: str, api_version: str):
         self.kind = kind
         self.version = version
         self.api_version = api_version
@@ -30,33 +32,33 @@ class SchemaNotFoundError(Exception):
 
 
 class VersionNotSupportedError(Exception):
-    def __init__(self, version):
+    def __init__(self, version: str):
         self.version = version
         self.message = ("kubernetes-validate does not support version %s" % self.version)
 
 
 class InvalidSchemaError(Exception):
-    def __init__(self, message):
+    def __init__(self, message: str):
         self.message = message
 
 
-def all_versions():
+def all_versions() -> List[str]:
     schemas = pkg_resources.resource_listdir('kubernetes_validate', '/kubernetes-json-schema')
     version_regex = re.compile(r'^v([^-]*).*')
     return sorted([version_regex.sub(r"\1", schema) for schema in schemas if version_regex.match(schema)],
                   key=LooseVersion)
 
 
-def major_minor(version):
+def major_minor(version: str) -> str:
     version_regex = re.compile(r'^(\d+\.\d+).*')
     return version_regex.sub(r"\1", version)
 
 
-def latest_version():
+def latest_version() -> str:
     return all_versions()[-1]
 
 
-def validate(data, desired_version, strict=False):
+def validate(data, desired_version: str, strict=False) -> str:
     # strip initial v from version (I keep forgetting, so other people will too)
     if desired_version.startswith('v'):
         desired_version = desired_version[1:]
@@ -84,7 +86,7 @@ def validate(data, desired_version, strict=False):
                                   api_version=data['apiVersion'])
     try:
         schema = json.load(f)
-    except json.JsonDecodeError:
+    except json.decoder.JSONDecodeError:
         raise InvalidSchemaError("Couldn't parse schema %s" % schema_file)
     finally:
         f.close()
@@ -102,31 +104,38 @@ def validate(data, desired_version, strict=False):
         return major_minor(version)
     except jsonschema.ValidationError as e:
         raise ValidationError(e, version=major_minor(version))
-    except jsonschema.exceptions.RefResolutionError:
+    except jsonschema.RefResolutionError:
         raise
 
 
-def kn(resource):
+def kn(resource: dict) -> str:
     return "%s/%s" % (resource["kind"].lower(), resource["metadata"]["name"])
 
 
-def validate_resource(resource, filename, version, strict, quiet, no_warn):
+def validate_resource(
+    resource: dict,
+    filename: str,
+    version: str,
+    strict: bool,
+    quiet: bool,
+    no_warn: bool,
+) -> int:
     try:
         validated_version = validate(resource, version, strict)
         if not quiet:
             print("INFO %s passed for resource %s against version %s" %
-                  (filename, kn(resource), validated_version))
+                (filename, kn(resource), validated_version))
     except ValidationError as e:
         path = '.'.join([str(item) for item in e.path])
         print("ERROR %s did not validate for resource %s against version %s: %s: %s" %
-              (filename, kn(resource), e.version, path, e.message))
+            (filename, kn(resource), e.version, path, e.message))
         return 1
     except (SchemaNotFoundError, InvalidSchemaError) as e:
         if not no_warn:
             print("WARN %s %s" % (filename, e.message))
     except VersionNotSupportedError:
         print("FATAL kubernetes-validate %s does not support kubernetes version %s" %
-              (__version__, version))
+            (__version__, version))
         return 2
     except Exception as e:
         print("ERROR %s could not be validated: %s" % (filename, str(e)))
@@ -134,7 +143,8 @@ def validate_resource(resource, filename, version, strict, quiet, no_warn):
     return 0
 
 
-def construct_value(load, node):
+
+def construct_value(load, node: yaml.ScalarNode) -> Generator[str, None, None]:
     if not isinstance(node, yaml.ScalarNode):
         raise yaml.constructor.ConstructorError(
             "while constructing a value",
@@ -144,7 +154,7 @@ def construct_value(load, node):
     yield str(node.value)
 
 
-def resources_from_file(filename):
+def resources_from_file(filename: str) -> List[Dict]:
     # Handle nodes that start with '='
     # See https://github.com/yaml/pyyaml/issues/89
     yaml.SafeLoader.add_constructor(u'tag:yaml.org,2002:value', construct_value)
@@ -166,8 +176,17 @@ def resources_from_file(filename):
     return data
 
 
-def validate_file(filename, version, strict, quiet, no_warn):
+def validate_file(
+    filename: str, version: str, strict: bool, quiet: bool, no_warn: bool
+) -> int:
     rc = 0
     for resource in resources_from_file(filename):
-        rc |= validate_resource(resource, filename, version, strict, quiet, no_warn)
+        rc |= validate_resource(
+            resource=resource,
+            filename=filename,
+            version=version,
+            strict=strict,
+            quiet=quiet,
+            no_warn=no_warn,
+        )
     return rc
