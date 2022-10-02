@@ -124,24 +124,23 @@ def validate_resource(
         validated_version = validate(resource, version, strict)
         if not quiet:
             print("INFO %s passed for resource %s against version %s" %
-                (filename, kn(resource), validated_version))
+                  (filename, kn(resource), validated_version))
     except ValidationError as e:
         path = '.'.join([str(item) for item in e.path])
         print("ERROR %s did not validate for resource %s against version %s: %s: %s" %
-            (filename, kn(resource), e.version, path, e.message))
+              (filename, kn(resource), e.version, path, e.message))
         return 1
     except (SchemaNotFoundError, InvalidSchemaError) as e:
         if not no_warn:
             print("WARN %s %s" % (filename, e.message))
     except VersionNotSupportedError:
         print("FATAL kubernetes-validate %s does not support kubernetes version %s" %
-            (__version__, version))
+              (__version__, version))
         return 2
     except Exception as e:
         print("ERROR %s could not be validated: %s" % (filename, str(e)))
         return 2
     return 0
-
 
 
 def construct_value(load, node: yaml.ScalarNode) -> Generator[str, None, None]:
