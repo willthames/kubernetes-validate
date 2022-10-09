@@ -58,7 +58,7 @@ def latest_version() -> str:
     return all_versions()[-1]
 
 
-def validate(data: Dict[str, Any], desired_version: str, strict: bool=False) -> str:
+def validate(data: Dict[str, Any], desired_version: str, strict: bool = False) -> str:
     # strip initial v from version (I keep forgetting, so other people will too)
     if desired_version.startswith('v'):
         desired_version = desired_version[1:]
