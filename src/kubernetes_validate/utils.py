@@ -6,7 +6,7 @@ import platform
 import re
 import sys
 from distutils.version import LooseVersion
-from typing import Dict, Generator, List
+from typing import Any, Dict, Generator, List
 
 import jsonschema
 import pkg_resources
@@ -58,7 +58,7 @@ def latest_version() -> str:
     return all_versions()[-1]
 
 
-def validate(data, desired_version: str, strict=False) -> str:
+def validate(data: Dict[str, Any], desired_version: str, strict: bool=False) -> str:
     # strip initial v from version (I keep forgetting, so other people will too)
     if desired_version.startswith('v'):
         desired_version = desired_version[1:]
@@ -143,7 +143,7 @@ def validate_resource(
     return 0
 
 
-def construct_value(load, node: yaml.ScalarNode) -> Generator[str, None, None]:
+def construct_value(load: yaml.Loader, node: yaml.ScalarNode) -> Generator[str, None, None]:
     if not isinstance(node, yaml.ScalarNode):
         raise yaml.constructor.ConstructorError(
             "while constructing a value",
