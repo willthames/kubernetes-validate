@@ -10,7 +10,7 @@ import kubernetes_validate.utils as utils
 from kubernetes_validate.version import __version__
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(description='validate a kubernetes resource definition')
     parser.add_argument('-k', '--kubernetes-version', action='append',
                         help='version of kubernetes against which to validate. Defaults to %s' %
