@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SelfSubjectRulesReviewSpec",
+  "description": "SelfSubjectRulesReviewSpec defines the specification for SelfSubjectRulesReview.",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.ValidatingWebhookConfigurationList",
+  "description": "ValidatingWebhookConfigurationList is a list of ValidatingWebhookConfiguration.",
+  "type": "object"
+}
