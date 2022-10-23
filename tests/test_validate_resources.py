@@ -1,40 +1,39 @@
 import os
+import pytest
 from kubernetes_validate import utils
 
 parent = os.path.dirname(__file__)
 
+VERSIONS = set(utils.all_versions())
+
 
 def test_validate_valid_resource():
     resources = utils.resources_from_file(os.path.join(parent, 'resource.yaml'))
-    utils.validate(resources[0], '1.22.0', strict=False)
+    for version in VERSIONS:
+        utils.validate(resources[0], version, strict=False)
 
 
 def test_validate_strict_resource():
     resources = utils.resources_from_file(os.path.join(parent, 'kuard-extra-property.yaml'))
-    utils.validate(resources[0], '1.22.0', strict=False)
-    try:
-        utils.validate(resources[0], '1.22.0', strict=True)
-        assert False
-    except utils.ValidationError:
-        assert True
+    for version in VERSIONS:
+        utils.validate(resources[0], version, strict=False)
+    for version in VERSIONS:
+        with pytest.raises(utils.ValidationError):
+            utils.validate(resources[0], version, strict=True)
 
 
 def test_validate_invalid_resource():
     resources = utils.resources_from_file(os.path.join(parent, 'kuard-invalid-type.yaml'))
-    try:
-        utils.validate(resources[0], '1.22.0', strict=False)
-        assert False
-    except utils.ValidationError:
-        assert True
+    for version in VERSIONS:
+        with pytest.raises(utils.ValidationError):
+            utils.validate(resources[0], version, strict=False)
 
 
 def test_validate_madeup_resource():
     resources = utils.resources_from_file(os.path.join(parent, 'kuard-made-up-kind.yaml'))
-    try:
-        utils.validate(resources[0], '1.22.0', strict=False)
-        assert False
-    except utils.SchemaNotFoundError:
-        assert True
+    for version in VERSIONS:
+        with pytest.raises(utils.SchemaNotFoundError):
+            utils.validate(resources[0], version, strict=False)
 
 
 def test_validate_version_too_new():
