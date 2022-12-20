@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.authentication.v1alpha1.SelfSubjectReviewStatus",
+  "description": "SelfSubjectReviewStatus is filled by the kube-apiserver and sent back to a user.",
+  "type": "object"
+}

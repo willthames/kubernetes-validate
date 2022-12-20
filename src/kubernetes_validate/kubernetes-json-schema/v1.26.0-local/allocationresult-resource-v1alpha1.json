@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1alpha1.AllocationResult",
+  "description": "AllocationResult contains attributed of an allocated resource.",
+  "type": "object"
+}

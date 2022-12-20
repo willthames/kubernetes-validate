@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1alpha1.ResourceClaimConsumerReference",
+  "description": "ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim.",
+  "type": "object"
+}

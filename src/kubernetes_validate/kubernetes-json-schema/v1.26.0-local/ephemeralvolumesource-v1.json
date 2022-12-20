@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralVolumeSource",
+  "description": "Represents an ephemeral volume that is handled by a normal storage driver.",
+  "type": "object"
+}

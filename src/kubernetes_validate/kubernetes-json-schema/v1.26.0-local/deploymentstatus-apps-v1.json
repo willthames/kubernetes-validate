@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.DeploymentStatus",
+  "description": "DeploymentStatus is the most recently observed status of the Deployment.",
+  "type": "object"
+}

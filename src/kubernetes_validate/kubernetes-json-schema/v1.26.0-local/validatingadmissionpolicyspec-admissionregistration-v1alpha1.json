@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.ValidatingAdmissionPolicySpec",
+  "description": "ValidatingAdmissionPolicySpec is the specification of the desired behavior of the AdmissionPolicy.",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1alpha1.ResourceClaimSpec",
+  "description": "ResourceClaimSpec defines how a resource is to be allocated.",
+  "type": "object"
+}

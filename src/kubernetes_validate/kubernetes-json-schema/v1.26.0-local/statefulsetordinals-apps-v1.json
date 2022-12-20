@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.StatefulSetOrdinals",
+  "description": "StatefulSetOrdinals describes the policy used for replica ordinal assignment in this StatefulSet.",
+  "type": "object"
+}
