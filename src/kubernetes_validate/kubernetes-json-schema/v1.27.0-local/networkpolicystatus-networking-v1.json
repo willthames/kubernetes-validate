@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.NetworkPolicyStatus",
+  "description": "NetworkPolicyStatus describes the current state of the NetworkPolicy.",
+  "type": "object"
+}

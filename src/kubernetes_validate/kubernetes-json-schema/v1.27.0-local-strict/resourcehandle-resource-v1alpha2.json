@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceHandle",
+  "description": "ResourceHandle holds opaque resource data for processing by a specific kubelet plugin.",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause",
+  "description": "StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.",
+  "type": "object"
+}
