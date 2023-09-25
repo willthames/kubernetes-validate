@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kubernetes-validate"
+authors = [
+    {name = "Will Thames", email = "will@thames.id.au"},
+]
+description = "validates kubernetes resource definitions against schemas"
+requires-python = ">=3.7"
+keywords = ["kubernetes", "schema", "validate", "validator"]
+license = {text = "Apache"}
+dependencies = [
+    "PyYAML",
+    'jsonschema',
+]
+dynamic = ["version", "readme"]
+
+[project.urls]
+Homepage = "https://github.com/willthames/kubernetes-validate"
+
+[project.scripts]
+kubernetes-validate = "kubernetes_validate.__main__:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "kubernetes_validate.version.__version__"}
+readme = {file = ["README.md"], content-type = "text/markdown"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ['kubernetes-json-schema/*-local/*.json', 'kubernetes-json-schema/*-local-strict/*.json']
