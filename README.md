@@ -57,7 +57,7 @@ optional arguments:
 e.g.
 
 ```
-$ kubernetes-validate -k 1.20 --strict resource.yml
+$ kubernetes-validate -k 1.27 --strict resource.yml
 ```
 
 ### Python
@@ -77,17 +77,17 @@ except kubernetes_validate.ValidationError as e:
 ### Examples
 
 ```
-$ kubernetes-validate -k 1.13.6 examples/kuard-extra-property.yaml
-INFO  examples/kuard-extra-property.yaml passed against version 1.13.6
+$ kubernetes-validate -k 1.21 examples/kuard-extra-property.yaml
+INFO  examples/kuard-extra-property.yaml passed against version 1.21
 ```
 
 ```
 $ kubernetes-validate --strict examples/kuard-extra-property.yaml
-ERROR examples/kuard-extra-property.yaml did not validate against version 1.16.0: spec.selector: Additional properties are not allowed ('unwanted' was unexpected)
+ERROR examples/kuard-extra-property.yaml did not validate against version 1.28.0: spec.selector: Additional properties are not allowed ('unwanted' was unexpected)
 ```
 
 ```
 $ kubernetes-validate examples/kuard-invalid-type.yaml
-ERROR examples/kuard-invalid-type.yaml did not validate against version 1.16.0: spec.replicas: 'hello' is not of type u'integer'
+ERROR examples/kuard-invalid-type.yaml did not validate against version 1.28.0: spec.replicas: 'hello' is not of type u'integer'
 ```
 
