@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.RoleBindingList",
+  "description": "RoleBindingList is a collection of RoleBindings",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ExpressionWarning",
+  "description": "ExpressionWarning is a warning information that targets a specific expression.",
+  "type": "object"
+}

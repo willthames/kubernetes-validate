@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodIP",
+  "description": "PodIP represents a single IP address allocated to the pod.",
+  "type": "object"
+}

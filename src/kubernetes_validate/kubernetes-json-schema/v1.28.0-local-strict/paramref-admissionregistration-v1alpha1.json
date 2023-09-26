@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.ParamRef",
+  "description": "ParamRef describes how to locate the params to be used as input to expressions of rules applied by a policy binding.",
+  "type": "object"
+}

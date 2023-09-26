@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimCondition",
+  "description": "PersistentVolumeClaimCondition contains details about state of pvc",
+  "type": "object"
+}

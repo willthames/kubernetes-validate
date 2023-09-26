@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.PodSchedulingContextList",
+  "description": "PodSchedulingContextList is a collection of Pod scheduling objects.",
+  "type": "object"
+}

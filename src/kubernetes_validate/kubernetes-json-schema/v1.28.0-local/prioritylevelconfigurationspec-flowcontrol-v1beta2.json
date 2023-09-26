@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationSpec",
+  "description": "PriorityLevelConfigurationSpec specifies the configuration of a priority level.",
+  "type": "object"
+}

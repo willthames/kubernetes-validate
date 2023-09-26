@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.MatchCondition",
+  "description": "MatchCondition represents a condition which must by fulfilled for a request to be sent to a webhook.",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.ClusterRoleList",
+  "description": "ClusterRoleList is a collection of ClusterRoles",
+  "type": "object"
+}

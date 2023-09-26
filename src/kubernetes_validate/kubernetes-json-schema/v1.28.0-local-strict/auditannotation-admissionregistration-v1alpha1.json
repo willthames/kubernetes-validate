@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.AuditAnnotation",
+  "description": "AuditAnnotation describes how to produce an audit annotation for an API request.",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceClaimTemplateList",
+  "description": "ResourceClaimTemplateList is a collection of claim templates.",
+  "type": "object"
+}

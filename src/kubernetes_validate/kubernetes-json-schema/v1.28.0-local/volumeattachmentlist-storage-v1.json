@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.VolumeAttachmentList",
+  "description": "VolumeAttachmentList is a collection of VolumeAttachment objects.",
+  "type": "object"
+}
