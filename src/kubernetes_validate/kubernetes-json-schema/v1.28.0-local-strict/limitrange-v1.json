@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LimitRange",
+  "description": "LimitRange sets resource usage limits for each kind of resource in a Namespace.",
+  "type": "object"
+}

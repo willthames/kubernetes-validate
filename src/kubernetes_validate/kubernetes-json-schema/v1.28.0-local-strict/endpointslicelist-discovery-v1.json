@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1.EndpointSliceList",
+  "description": "EndpointSliceList represents a list of endpoint slices",
+  "type": "object"
+}

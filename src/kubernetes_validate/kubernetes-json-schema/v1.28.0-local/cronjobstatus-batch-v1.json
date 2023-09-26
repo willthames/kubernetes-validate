@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.CronJobStatus",
+  "description": "CronJobStatus represents the current state of a cron job.",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionCondition",
+  "description": "Describes the state of the storageVersion at a certain point.",
+  "type": "object"
+}

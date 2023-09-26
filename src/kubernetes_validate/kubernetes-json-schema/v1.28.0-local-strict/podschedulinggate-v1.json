@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSchedulingGate",
+  "description": "PodSchedulingGate is associated to a Pod to guard its scheduling.",
+  "type": "object"
+}

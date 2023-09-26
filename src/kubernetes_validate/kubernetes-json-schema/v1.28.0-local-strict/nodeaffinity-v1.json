@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeAffinity",
+  "description": "Node affinity is a group of node affinity scheduling rules.",
+  "type": "object"
+}
