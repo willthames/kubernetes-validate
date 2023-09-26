@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceClassParametersReference",
+  "description": "ResourceClassParametersReference contains enough information to let you locate the parameters for a ResourceClass.",
+  "type": "object"
+}

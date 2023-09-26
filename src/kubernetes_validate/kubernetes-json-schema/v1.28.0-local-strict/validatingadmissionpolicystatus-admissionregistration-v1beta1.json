@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingAdmissionPolicyStatus",
+  "description": "ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.",
+  "type": "object"
+}

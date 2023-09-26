@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.IngressPortStatus",
+  "description": "IngressPortStatus represents the error condition of a service port",
+  "type": "object"
+}

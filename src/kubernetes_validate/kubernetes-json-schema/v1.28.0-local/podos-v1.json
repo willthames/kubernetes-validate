@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodOS",
+  "description": "PodOS defines the OS parameters of a pod.",
+  "type": "object"
+}

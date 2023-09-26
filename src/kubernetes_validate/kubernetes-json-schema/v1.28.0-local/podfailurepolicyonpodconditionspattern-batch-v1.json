@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicyOnPodConditionsPattern",
+  "description": "PodFailurePolicyOnPodConditionsPattern describes a pattern for matching an actual pod condition type.",
+  "type": "object"
+}

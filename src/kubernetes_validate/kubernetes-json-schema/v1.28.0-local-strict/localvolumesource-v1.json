@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalVolumeSource",
+  "description": "Local represents directly-attached storage with node affinity (Beta feature)",
+  "type": "object"
+}

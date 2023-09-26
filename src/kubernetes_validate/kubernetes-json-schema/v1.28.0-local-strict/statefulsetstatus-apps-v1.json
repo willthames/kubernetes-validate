@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.StatefulSetStatus",
+  "description": "StatefulSetStatus represents the current state of a StatefulSet.",
+  "type": "object"
+}
