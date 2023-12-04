@@ -6,7 +6,7 @@ import platform
 import re
 import sys
 from distutils.version import LooseVersion
-from typing import Any, Dict, Generator, List
+from typing import Any, Dict, Generator, List, Union
 
 import jsonschema
 import pkg_resources
@@ -58,7 +58,12 @@ def latest_version() -> str:
     return all_versions()[-1]
 
 
-def validate(data: Dict[str, Any], desired_version: str, strict: bool = False) -> str:
+def validate(data: Union[Dict[str, Any], object], desired_version: str, strict: bool = False) -> str:
+    if not isinstance(data, dict):
+        try:
+            data = data.to_dict()
+        except AttributeError:
+            raise TypeError("data must be a dict or object with a to_dict() method")
     # strip initial v from version (I keep forgetting, so other people will too)
     if desired_version.startswith('v'):
         desired_version = desired_version[1:]
