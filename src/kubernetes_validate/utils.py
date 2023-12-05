@@ -58,7 +58,7 @@ def latest_version() -> str:
     return all_versions()[-1]
 
 
-def validate(data: Union[Dict[str, Any], object], desired_version: str, strict: bool = False) -> str:
+def validate(data: Union[Dict[str, Any], Any], desired_version: str, strict: bool = False) -> str:
     if not isinstance(data, dict):
         try:
             data = data.to_dict()
