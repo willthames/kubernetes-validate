@@ -15,8 +15,9 @@ import yaml
 
 from kubernetes_validate.version import __version__
 
+
 class SupportsToDict(Protocol):
-    def to_dict(self) -> dict: ...
+    def to_dict(self) -> dict: ...  # noqa: E704
 
 
 class ValidationError(jsonschema.ValidationError):
