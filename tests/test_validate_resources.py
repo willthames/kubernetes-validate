@@ -44,6 +44,7 @@ def test_validate_version_too_new():
     except utils.VersionNotSupportedError:
         assert True
 
+
 def test_validate_object_resource():
     resources = utils.resources_from_file(os.path.join(parent, 'resource.yaml'))
 
