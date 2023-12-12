@@ -1,0 +1,4 @@
+mypy
+types-jsonschema
+types-setuptools
+types-PyYAML

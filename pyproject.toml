@@ -12,8 +12,9 @@ requires-python = ">=3.7"
 keywords = ["kubernetes", "schema", "validate", "validator"]
 license = {text = "Apache"}
 dependencies = [
-    "PyYAML",
+    'PyYAML',
     'jsonschema',
+    'typing-extensions'
 ]
 dynamic = ["version", "readme"]
 
