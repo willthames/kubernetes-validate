@@ -10,7 +10,9 @@ from typing_extensions import Protocol
 from packaging.version import Version
 
 import jsonschema
-import importlib.resources
+
+import importlib_resources
+
 import yaml
 
 from kubernetes_validate.version import __version__
@@ -48,7 +50,7 @@ class InvalidSchemaError(Exception):
 
 
 def all_versions() -> List[str]:
-    schemas = importlib.resources.files('kubernetes_validate').joinpath('kubernetes-json-schema')
+    schemas = importlib_resources.files('kubernetes_validate').joinpath('kubernetes-json-schema')
     version_regex = re.compile(r'^v([^-]*).*')
     return sorted([version_regex.sub(r"\1", schema.name)
                    for schema in schemas.iterdir()
@@ -85,10 +87,10 @@ def validate(data: Union[Dict[str, Any], SupportsToDict], desired_version: str, 
     schema_dir = 'v%s-local' % version
     if strict:
         schema_dir += '-strict'
-    ref = importlib.resources.files('kubernetes_validate').joinpath('kubernetes-json-schema/%s/%s-%s.json' %
+    ref = importlib_resources.files('kubernetes_validate').joinpath('kubernetes-json-schema/%s/%s-%s.json' %
                                                                     (schema_dir, data['kind'].lower(),
                                                                      api_version))
-    with importlib.resources.as_file(ref) as schema_file:
+    with importlib_resources.as_file(ref) as schema_file:
         try:
             f = open(schema_file)
         except IOError:

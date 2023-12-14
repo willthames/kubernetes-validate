@@ -14,7 +14,9 @@ license = {text = "Apache"}
 dependencies = [
     'PyYAML',
     'jsonschema',
-    'typing-extensions'
+    'typing-extensions',
+    'importlib-resources',
+    'packaging'
 ]
 dynamic = ["version", "readme"]
 
