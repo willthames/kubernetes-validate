@@ -1,6 +1,18 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "GroupSubject holds detailed information for group-kind subject.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta1.GroupSubject"
+  "description": "GroupSubject holds detailed information for group-kind subject.",
+  "properties": {
+    "name": {
+      "description": "name is the user group that matches, or \"*\" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/groupsubject/flowcontrol/v1beta1"
 }

@@ -1,6 +1,13 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeNodeAffinity",
   "description": "VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.",
-  "type": "object"
+  "properties": {
+    "required": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.core.v1.NodeSelector",
+      "description": "Required specifies hard node constraints that must be met."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/volumenodeaffinity/v1"
 }

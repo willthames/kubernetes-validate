@@ -1,6 +1,26 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPHeader",
   "description": "HTTPHeader describes a custom header to be used in HTTP probes",
-  "type": "object"
+  "properties": {
+    "name": {
+      "description": "The header field name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "description": "The header field value",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "value"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/httpheader/v1"
 }

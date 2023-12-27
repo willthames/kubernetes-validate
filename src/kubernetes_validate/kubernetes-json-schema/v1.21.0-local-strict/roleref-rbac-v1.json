@@ -1,6 +1,35 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "RoleRef contains information that points to the role being used", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.RoleRef"
+  "description": "RoleRef contains information that points to the role being used",
+  "properties": {
+    "apiGroup": {
+      "description": "APIGroup is the group for the resource being referenced",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is the type of resource being referenced",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name is the name of resource being referenced",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "apiGroup",
+    "kind",
+    "name"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/roleref/rbac/v1"
 }

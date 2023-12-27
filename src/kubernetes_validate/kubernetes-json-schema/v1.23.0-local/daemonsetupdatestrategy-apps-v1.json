@@ -1,6 +1,23 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetUpdateStrategy",
   "description": "DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.",
-  "type": "object"
+  "properties": {
+    "rollingUpdate": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.apps.v1.RollingUpdateDaemonSet",
+      "description": "Rolling update config params. Present only if type = \"RollingUpdate\"."
+    },
+    "type": {
+      "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate.\n\nPossible enum values:\n - `\"OnDelete\"` Replace the old daemons only when it's killed\n - `\"RollingUpdate\"` Replace the old daemons by new ones using rolling update i.e replace them on each node one after the other.",
+      "enum": [
+        "OnDelete",
+        "RollingUpdate"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/daemonsetupdatestrategy/apps/v1"
 }

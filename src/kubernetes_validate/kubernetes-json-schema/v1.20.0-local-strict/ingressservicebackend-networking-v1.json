@@ -1,6 +1,23 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "IngressServiceBackend references a Kubernetes Service as a Backend.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.IngressServiceBackend"
+  "description": "IngressServiceBackend references a Kubernetes Service as a Backend.",
+  "properties": {
+    "name": {
+      "description": "Name is the referenced service. The service must exist in the same namespace as the Ingress object.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "port": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.networking.v1.ServiceBackendPort",
+      "description": "Port of the referenced service. A port name or port number is required for a IngressServiceBackend."
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/ingressservicebackend/networking/v1"
 }

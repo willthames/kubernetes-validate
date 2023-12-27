@@ -1,6 +1,49 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.JobCondition",
   "description": "JobCondition describes current state of a job.",
-  "type": "object"
+  "properties": {
+    "lastProbeTime": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "description": "Last time the condition was checked."
+    },
+    "lastTransitionTime": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "description": "Last time the condition transit from one status to another."
+    },
+    "message": {
+      "description": "Human readable message indicating details about last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "description": "(brief) reason for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type of job condition, Complete or Failed.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "status"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/jobcondition/batch/v1"
 }

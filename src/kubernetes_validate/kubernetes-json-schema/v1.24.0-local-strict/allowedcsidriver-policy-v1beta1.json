@@ -1,6 +1,19 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.AllowedCSIDriver",
   "description": "AllowedCSIDriver represents a single inline CSI Driver that is allowed to be used.",
-  "type": "object"
+  "properties": {
+    "name": {
+      "description": "Name is the registered name of the CSI driver",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/allowedcsidriver/policy/v1beta1"
 }

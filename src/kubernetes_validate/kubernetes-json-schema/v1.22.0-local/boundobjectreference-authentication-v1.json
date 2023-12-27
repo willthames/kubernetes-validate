@@ -1,6 +1,36 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "BoundObjectReference is a reference to an object that a token is bound to.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.authentication.v1.BoundObjectReference"
+  "description": "BoundObjectReference is a reference to an object that a token is bound to.",
+  "properties": {
+    "apiVersion": {
+      "description": "API version of the referent.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind of the referent. Valid kinds are 'Pod' and 'Secret'.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name of the referent.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uid": {
+      "description": "UID of the referent.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/boundobjectreference/authentication/v1"
 }

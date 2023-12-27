@@ -1,6 +1,17 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.ScaleSpec",
   "description": "ScaleSpec describes the attributes of a scale subresource.",
-  "type": "object"
+  "properties": {
+    "replicas": {
+      "description": "replicas is the desired number of instances for the scaled object.",
+      "format": "int32",
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/scalespec/autoscaling/v1"
 }

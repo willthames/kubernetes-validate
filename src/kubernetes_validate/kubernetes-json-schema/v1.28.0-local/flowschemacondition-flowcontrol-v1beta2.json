@@ -1,6 +1,40 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.FlowSchemaCondition",
   "description": "FlowSchemaCondition describes conditions for a FlowSchema.",
-  "type": "object"
+  "properties": {
+    "lastTransitionTime": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "description": "`lastTransitionTime` is the last time the condition transitioned from one status to another."
+    },
+    "message": {
+      "description": "`message` is a human-readable message indicating details about last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "description": "`reason` is a unique, one-word, CamelCase reason for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "`status` is the status of the condition. Can be True, False, Unknown. Required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "`type` is the type of the condition. Required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/flowschemacondition/flowcontrol/v1beta2"
 }

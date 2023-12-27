@@ -1,6 +1,12 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeDaemonEndpoints",
   "description": "NodeDaemonEndpoints lists ports opened by daemons running on the Node.",
-  "type": "object"
+  "properties": {
+    "kubeletEndpoint": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.core.v1.DaemonEndpoint",
+      "description": "Endpoint on which Kubelet is listening."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/nodedaemonendpoints/v1"
 }

@@ -1,6 +1,34 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricTarget",
   "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
-  "type": "object"
+  "properties": {
+    "averageUtilization": {
+      "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
+      "format": "int32",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "averageValue": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.api.resource.Quantity",
+      "description": "averageValue is the target value of the average of the metric across all relevant pods (as a quantity)"
+    },
+    "type": {
+      "description": "type represents whether the metric type is Utilization, Value, or AverageValue",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.api.resource.Quantity",
+      "description": "value is the target value of the metric (as a quantity)."
+    }
+  },
+  "required": [
+    "type"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/metrictarget/autoscaling/v2"
 }

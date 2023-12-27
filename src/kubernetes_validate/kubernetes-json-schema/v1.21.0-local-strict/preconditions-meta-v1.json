@@ -1,6 +1,23 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions"
+  "description": "Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.",
+  "properties": {
+    "resourceVersion": {
+      "description": "Specifies the target ResourceVersion",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uid": {
+      "description": "Specifies the target UID.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/preconditions/meta/v1"
 }

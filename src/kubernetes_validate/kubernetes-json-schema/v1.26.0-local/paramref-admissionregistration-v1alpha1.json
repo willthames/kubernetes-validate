@@ -1,6 +1,23 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.ParamRef",
   "description": "ParamRef references a parameter resource",
-  "type": "object"
+  "properties": {
+    "name": {
+      "description": "Name of the resource being referenced.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "Namespace of the referenced resource. Should be empty for the cluster-scoped resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "x-kubernetes-map-type": "atomic",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/paramref/admissionregistration/v1alpha1"
 }

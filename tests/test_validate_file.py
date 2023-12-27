@@ -5,7 +5,7 @@ parent = os.path.dirname(__file__)
 
 
 def test_validate_resource_file():
-    rc = kubernetes_validate.validate_file(os.path.join(parent, 'resource.yaml'), '1.22.0',
+    rc = kubernetes_validate.validate_file(os.path.join(parent, 'resource.yaml'), '1.29.0',
                                            strict=False, quiet=True, no_warn=True)
     assert (rc == 0)
 

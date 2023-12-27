@@ -1,6 +1,27 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "NodeAddress contains information for the node's address.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeAddress"
+  "description": "NodeAddress contains information for the node's address.",
+  "properties": {
+    "address": {
+      "description": "The node address.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Node address type, one of Hostname, ExternalIP or InternalIP.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "address"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/nodeaddress/v1"
 }

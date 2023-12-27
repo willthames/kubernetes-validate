@@ -1,6 +1,21 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta2.ExternalMetricStatus",
   "description": "ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.",
-  "type": "object"
+  "properties": {
+    "current": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.autoscaling.v2beta2.MetricValueStatus",
+      "description": "current contains the current value for the given metric"
+    },
+    "metric": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.autoscaling.v2beta2.MetricIdentifier",
+      "description": "metric identifies the target metric by name and selector"
+    }
+  },
+  "required": [
+    "metric",
+    "current"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/externalmetricstatus/autoscaling/v2beta2"
 }

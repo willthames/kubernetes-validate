@@ -1,6 +1,41 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "NamespaceCondition contains details about state of namespace.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition"
+  "description": "NamespaceCondition contains details about state of namespace.",
+  "properties": {
+    "lastTransitionTime": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type of namespace controller condition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "status"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/namespacecondition/v1"
 }
