@@ -1,6 +1,26 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1alpha1.AllocationResult",
   "description": "AllocationResult contains attributed of an allocated resource.",
-  "type": "object"
+  "properties": {
+    "availableOnNodes": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.core.v1.NodeSelector",
+      "description": "This field will get set by the resource driver after it has allocated the resource driver to inform the scheduler where it can schedule Pods using the ResourceClaim.\n\nSetting this field is optional. If null, the resource is available everywhere."
+    },
+    "resourceHandle": {
+      "description": "ResourceHandle contains arbitrary data returned by the driver after a successful allocation. This is opaque for Kubernetes. Driver documentation may explain to users how to interpret this data if needed.\n\nThe maximum size of this field is 16KiB. This may get increased in the future, but not reduced.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "shareable": {
+      "description": "Shareable determines whether the resource supports more than one consumer at a time.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/allocationresult/resource/v1alpha1"
 }

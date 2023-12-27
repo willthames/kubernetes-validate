@@ -1,6 +1,16 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "CustomResourceSubresources defines the status and scale subresources for CustomResources.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresources"
+  "description": "CustomResourceSubresources defines the status and scale subresources for CustomResources.",
+  "properties": {
+    "scale": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresourceScale",
+      "description": "scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object."
+    },
+    "status": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresourceStatus",
+      "description": "status indicates the custom resource should serve a `/status` subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the `status` stanza of the object. 2. requests to the custom resource `/status` subresource ignore changes to anything other than the `status` stanza of the object."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/customresourcesubresources/apiextensions/v1beta1"
 }

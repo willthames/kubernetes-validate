@@ -1,6 +1,25 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "MetricValueStatus holds the current value for a metric", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta2.MetricValueStatus"
+  "description": "MetricValueStatus holds the current value for a metric",
+  "properties": {
+    "averageUtilization": {
+      "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
+      "format": "int32",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "averageValue": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.api.resource.Quantity",
+      "description": "averageValue is the current value of the average of the metric across all relevant pods (as a quantity)"
+    },
+    "value": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.api.resource.Quantity",
+      "description": "value is the current value of the metric (as a quantity)."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/metricvaluestatus/autoscaling/v2beta2"
 }

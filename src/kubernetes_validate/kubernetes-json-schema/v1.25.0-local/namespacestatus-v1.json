@@ -1,6 +1,27 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceStatus",
   "description": "NamespaceStatus is information about the current status of a Namespace.",
-  "type": "object"
+  "properties": {
+    "conditions": {
+      "description": "Represents the latest available observations of a namespace's current state.",
+      "items": {
+        "$ref": "/api/_definitions.json#/$defs/io.k8s.api.core.v1.NamespaceCondition"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "phase": {
+      "description": "Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/\n\n",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/namespacestatus/v1"
 }

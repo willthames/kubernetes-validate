@@ -1,6 +1,17 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SelfSubjectAccessReviewSpec"
+  "description": "SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set",
+  "properties": {
+    "nonResourceAttributes": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.authorization.v1.NonResourceAttributes",
+      "description": "NonResourceAttributes describes information for a non-resource access request"
+    },
+    "resourceAttributes": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.authorization.v1.ResourceAttributes",
+      "description": "ResourceAuthorizationAttributes describes information for a resource access request"
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/selfsubjectaccessreviewspec/authorization/v1"
 }

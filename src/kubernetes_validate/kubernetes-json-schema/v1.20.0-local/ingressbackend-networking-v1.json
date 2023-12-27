@@ -1,6 +1,16 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "IngressBackend describes all endpoints for a given service and port.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.IngressBackend"
+  "description": "IngressBackend describes all endpoints for a given service and port.",
+  "properties": {
+    "resource": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.core.v1.TypedLocalObjectReference",
+      "description": "Resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with \"Service\"."
+    },
+    "service": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.networking.v1.IngressServiceBackend",
+      "description": "Service references a Service as a Backend. This is a mutually exclusive setting with \"Resource\"."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/ingressbackend/networking/v1"
 }

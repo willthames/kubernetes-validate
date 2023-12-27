@@ -1,6 +1,25 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "APIServiceStatus contains derived information about an API server", 
-  "$ref": "_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceStatus"
+  "description": "APIServiceStatus contains derived information about an API server",
+  "properties": {
+    "conditions": {
+      "description": "Current service state of apiService.",
+      "items": {
+        "$ref": "/api/_definitions.json#/$defs/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceCondition"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map",
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/apiservicestatus/apiregistration/v1"
 }

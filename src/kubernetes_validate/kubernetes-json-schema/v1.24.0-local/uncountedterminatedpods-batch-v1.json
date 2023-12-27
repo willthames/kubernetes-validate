@@ -1,6 +1,36 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.UncountedTerminatedPods",
   "description": "UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.",
-  "type": "object"
+  "properties": {
+    "failed": {
+      "description": "Failed holds UIDs of failed Pods.",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "set"
+    },
+    "succeeded": {
+      "description": "Succeeded holds UIDs of succeeded Pods.",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "set"
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/uncountedterminatedpods/batch/v1"
 }

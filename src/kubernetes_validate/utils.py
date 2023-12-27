@@ -11,8 +11,9 @@ from packaging.version import Version
 
 import jsonschema
 
+from referencing import Registry, Resource
+import referencing.jsonschema
 import importlib_resources
-
 import yaml
 
 from kubernetes_validate.version import __version__
@@ -67,6 +68,24 @@ def latest_version() -> str:
     return all_versions()[-1]
 
 
+def schema_contents(filename: str, desired_version: str) -> Any:
+    ref = importlib_resources.files('kubernetes_validate').joinpath(filename)
+    with importlib_resources.as_file(ref) as schema_file:
+        try:
+            f = open(schema_file)
+        except FileNotFoundError:
+            if not os.path.exists(os.path.dirname(schema_file)):
+                raise VersionNotSupportedError(version=desired_version)
+            else:
+                raise
+        try:
+            return json.load(f)
+        except json.decoder.JSONDecodeError:
+            raise InvalidSchemaError("Couldn't parse schema %s" % schema_file)
+        finally:
+            f.close()
+
+
 def validate(data: Union[Dict[str, Any], SupportsToDict], desired_version: str, strict: bool = False) -> str:
     if not isinstance(data, dict):
         try:
@@ -87,38 +106,34 @@ def validate(data: Union[Dict[str, Any], SupportsToDict], desired_version: str, 
     schema_dir = 'v%s-local' % version
     if strict:
         schema_dir += '-strict'
-    ref = importlib_resources.files('kubernetes_validate').joinpath('kubernetes-json-schema/%s/%s-%s.json' %
-                                                                    (schema_dir, data['kind'].lower(),
-                                                                     api_version))
-    with importlib_resources.as_file(ref) as schema_file:
-        try:
-            f = open(schema_file)
-        except IOError:
-            if not os.path.exists(os.path.dirname(schema_file)):
-                raise VersionNotSupportedError(version=desired_version)
-            raise SchemaNotFoundError(version=major_minor(desired_version), kind=data['kind'],
-                                      api_version=data['apiVersion'])
-        try:
-            schema = json.load(f)
-        except json.decoder.JSONDecodeError:
-            raise InvalidSchemaError("Couldn't parse schema %s" % schema_file)
-        finally:
-            f.close()
-        schema_dir = os.path.dirname(os.path.abspath(schema_file))
+
+    try:
+        schema = schema_contents('kubernetes-json-schema/%s/%s-%s.json' %
+                                 (schema_dir, data['kind'].lower(),
+                                  api_version), desired_version)
+    except FileNotFoundError:
+        raise SchemaNotFoundError(version=major_minor(desired_version), kind=data['kind'],
+                                  api_version=data['apiVersion'])
+
+    schema_defs = schema_contents(f'kubernetes-json-schema/{schema_dir}/_definitions.json',
+                                  desired_version)
 
     uri_prefix = "file://"
     if platform.system() == 'Windows':
         uri_prefix += "/"
 
-    resolver = jsonschema.RefResolver(base_uri=uri_prefix + schema_dir.replace("\\", "/") + '/',
-                                      referrer=schema)
+    resource = Resource.from_contents(schema)
+    definitions = Resource.from_contents(schema_defs)
 
+    registry = resource @ Registry()  # type: Registry
+    registry = definitions @ registry
     try:
-        jsonschema.validate(data, schema, resolver=resolver)
+        validator = jsonschema.validators.Draft202012Validator(schema, registry=registry)
+        validator.validate(data)
         return major_minor(version)
     except jsonschema.ValidationError as e:
         raise ValidationError(e, version=major_minor(version))
-    except jsonschema.RefResolutionError:
+    except referencing.exceptions.Unresolvable:
         raise
 
 

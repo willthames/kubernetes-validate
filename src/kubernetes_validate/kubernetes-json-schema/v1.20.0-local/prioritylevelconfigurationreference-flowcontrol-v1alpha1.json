@@ -1,6 +1,18 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "PriorityLevelConfigurationReference contains information that points to the \"request-priority\" being used.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1alpha1.PriorityLevelConfigurationReference"
+  "description": "PriorityLevelConfigurationReference contains information that points to the \"request-priority\" being used.",
+  "properties": {
+    "name": {
+      "description": "`name` is the name of the priority level configuration being referenced Required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/prioritylevelconfigurationreference/flowcontrol/v1alpha1"
 }

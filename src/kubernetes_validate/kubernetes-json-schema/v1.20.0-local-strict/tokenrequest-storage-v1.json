@@ -1,6 +1,27 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "TokenRequest contains parameters of a service account token.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.TokenRequest"
+  "description": "TokenRequest contains parameters of a service account token.",
+  "properties": {
+    "audience": {
+      "description": "Audience is the intended audience of the token in \"TokenRequestSpec\". It will default to the audiences of kube apiserver.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expirationSeconds": {
+      "description": "ExpirationSeconds is the duration of validity of the token in \"TokenRequestSpec\". It has the same default value of \"ExpirationSeconds\" in \"TokenRequestSpec\".",
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "audience"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/tokenrequest/storage/v1"
 }

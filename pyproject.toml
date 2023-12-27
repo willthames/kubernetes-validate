@@ -16,7 +16,8 @@ dependencies = [
     'jsonschema',
     'typing-extensions',
     'importlib-resources',
-    'packaging'
+    'packaging',
+    'referencing'
 ]
 dynamic = ["version", "readme"]
 

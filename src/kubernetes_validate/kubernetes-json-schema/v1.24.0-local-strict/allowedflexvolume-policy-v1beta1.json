@@ -1,6 +1,19 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.AllowedFlexVolume",
   "description": "AllowedFlexVolume represents a single Flexvolume that is allowed to be used.",
-  "type": "object"
+  "properties": {
+    "driver": {
+      "description": "driver is the name of the Flexvolume driver.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "driver"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/allowedflexvolume/policy/v1beta1"
 }

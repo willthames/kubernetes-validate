@@ -1,6 +1,46 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "PersistentVolumeClaimCondition contails details about state of pvc", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimCondition"
+  "description": "PersistentVolumeClaimCondition contails details about state of pvc",
+  "properties": {
+    "lastProbeTime": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "description": "Last time we probed the condition."
+    },
+    "lastTransitionTime": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "description": "Last time the condition transitioned from one status to another."
+    },
+    "message": {
+      "description": "Human-readable message indicating details about last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "status"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/persistentvolumeclaimcondition/v1"
 }

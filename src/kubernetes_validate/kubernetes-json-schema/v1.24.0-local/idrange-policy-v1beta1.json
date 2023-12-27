@@ -1,6 +1,28 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.IDRange",
   "description": "IDRange provides a min/max of an allowed range of IDs.",
-  "type": "object"
+  "properties": {
+    "max": {
+      "description": "max is the end of the range, inclusive.",
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "min": {
+      "description": "min is the start of the range, inclusive.",
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "min",
+    "max"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/idrange/policy/v1beta1"
 }

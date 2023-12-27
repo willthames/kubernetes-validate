@@ -1,6 +1,29 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod's hosts file.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HostAlias"
+  "description": "HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod's hosts file.",
+  "properties": {
+    "hostnames": {
+      "description": "Hostnames for the above IP address.",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "ip": {
+      "description": "IP address of the host file entry.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/hostalias/v1"
 }

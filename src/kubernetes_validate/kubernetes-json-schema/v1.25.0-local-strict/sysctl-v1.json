@@ -1,6 +1,27 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Sysctl",
   "description": "Sysctl defines a kernel parameter to be set",
-  "type": "object"
+  "properties": {
+    "name": {
+      "description": "Name of a property to set",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "description": "Value of a property to set",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "value"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/sysctl/v1"
 }

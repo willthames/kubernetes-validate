@@ -1,6 +1,25 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Represents a Photon Controller persistent disk resource.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource"
+  "description": "Represents a Photon Controller persistent disk resource.",
+  "properties": {
+    "fsType": {
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pdID": {
+      "description": "ID that identifies Photon Controller persistent disk",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "pdID"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/photonpersistentdiskvolumesource/v1"
 }

@@ -1,6 +1,20 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EventSeries",
   "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time.",
-  "type": "object"
+  "properties": {
+    "count": {
+      "description": "Number of occurrences in this series up to the last heartbeat time",
+      "format": "int32",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "lastObservedTime": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
+      "description": "Time of the last occurrence observed"
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/eventseries/v1"
 }

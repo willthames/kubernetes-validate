@@ -1,6 +1,27 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.ScaleStatus",
   "description": "ScaleStatus represents the current status of a scale subresource.",
-  "type": "object"
+  "properties": {
+    "replicas": {
+      "description": "actual number of observed instances of the scaled object.",
+      "format": "int32",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "selector": {
+      "description": "label query over pods that should match the replicas count. This is same as the label selector but in the string format to avoid introspection by clients. The string will be in the same format as the query-param syntax. More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "replicas"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/scalestatus/autoscaling/v1"
 }
