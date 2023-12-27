@@ -1,6 +1,0 @@
-{
-  "description": "JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps or an array of JSONSchemaProps. Mainly here for serialization purposes.",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object",
-  "$id": "https://kubernetes.io/api/jsonschemapropsorarray/apiextensions/v1beta1"
-}
