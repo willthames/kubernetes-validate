@@ -1,0 +1,25 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - 'v1.*'
+      - 'gh-action-test-*'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Log in to registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: "{{defaultContext}}"
+          file: ./Dockerfile
+          push: true
+          tags: ghcr.io/${{github.repository}}:${{github.ref_name}}
+          labels: org.opencontainers.image.source=https://github.com/${{github_repository}}
