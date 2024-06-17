@@ -1,0 +1,19 @@
+{
+  "description": "NamedResourcesAllocationResult is used in AllocationResultModel.",
+  "properties": {
+    "name": {
+      "description": "Name is the name of the selected resource instance.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/namedresourcesallocationresult/resource/v1alpha2"
+}

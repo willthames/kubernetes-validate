@@ -1,0 +1,16 @@
+{
+  "description": "DriverAllocationResult contains vendor parameters and the allocation result for one request.",
+  "properties": {
+    "namedResources": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.resource.v1alpha2.NamedResourcesAllocationResult",
+      "description": "NamedResources describes the allocation result when using the named resources model."
+    },
+    "vendorRequestParameters": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "description": "VendorRequestParameters are the per-request configuration parameters from the time that the claim was allocated."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/driverallocationresult/resource/v1alpha2"
+}

@@ -1,0 +1,37 @@
+{
+  "description": "StructuredResourceHandle is the in-tree representation of the allocation result.",
+  "properties": {
+    "nodeName": {
+      "description": "NodeName is the name of the node providing the necessary resources if the resources are local to a node.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "results": {
+      "description": "Results lists all allocated driver resources.",
+      "items": {
+        "$ref": "/api/_definitions.json#/$defs/io.k8s.api.resource.v1alpha2.DriverAllocationResult"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "atomic"
+    },
+    "vendorClaimParameters": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "description": "VendorClaimParameters are the per-claim configuration parameters from the resource claim parameters at the time that the claim was allocated."
+    },
+    "vendorClassParameters": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "description": "VendorClassParameters are the per-claim configuration parameters from the resource class at the time that the claim was allocated."
+    }
+  },
+  "required": [
+    "results"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/structuredresourcehandle/resource/v1alpha2"
+}
