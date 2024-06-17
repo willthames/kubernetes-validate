@@ -1,0 +1,20 @@
+{
+  "description": "ResourceFilter is a filter for resources from one particular driver.",
+  "properties": {
+    "driverName": {
+      "description": "DriverName is the name used by the DRA driver kubelet plugin.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namedResources": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.resource.v1alpha2.NamedResourcesFilter",
+      "description": "NamedResources describes a resource filter using the named resources model."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/resourcefilter/resource/v1alpha2"
+}

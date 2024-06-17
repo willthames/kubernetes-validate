@@ -1,0 +1,25 @@
+{
+  "description": "NamedResourcesStringSlice contains a slice of strings.",
+  "properties": {
+    "strings": {
+      "description": "Strings is the slice of strings.",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "atomic"
+    }
+  },
+  "required": [
+    "strings"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/namedresourcesstringslice/resource/v1alpha2"
+}

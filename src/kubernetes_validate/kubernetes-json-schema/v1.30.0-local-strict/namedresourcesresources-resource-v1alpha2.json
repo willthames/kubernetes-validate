@@ -1,0 +1,23 @@
+{
+  "description": "NamedResourcesResources is used in ResourceModel.",
+  "properties": {
+    "instances": {
+      "description": "The list of all individual resources instances currently available.",
+      "items": {
+        "$ref": "/api/_definitions.json#/$defs/io.k8s.api.resource.v1alpha2.NamedResourcesInstance"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "atomic"
+    }
+  },
+  "required": [
+    "instances"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/namedresourcesresources/resource/v1alpha2"
+}

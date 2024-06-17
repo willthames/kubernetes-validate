@@ -1,0 +1,12 @@
+{
+  "description": "SessionAffinityConfig represents the configurations of session affinity.",
+  "properties": {
+    "clientIP": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.core.v1.ClientIPConfig",
+      "description": "clientIP contains the configurations of Client IP based session affinity."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/sessionaffinityconfig/v1"
+}

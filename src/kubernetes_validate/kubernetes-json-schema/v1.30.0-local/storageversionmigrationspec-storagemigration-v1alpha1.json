@@ -1,0 +1,22 @@
+{
+  "description": "Spec of the storage version migration.",
+  "properties": {
+    "continueToken": {
+      "description": "The token used in the list options to get the next chunk of objects to migrate. When the .status.conditions indicates the migration is \"Running\", users can use this token to check the progress of the migration.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resource": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.storagemigration.v1alpha1.GroupVersionResource",
+      "description": "The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable."
+    }
+  },
+  "required": [
+    "resource"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/storageversionmigrationspec/storagemigration/v1alpha1"
+}

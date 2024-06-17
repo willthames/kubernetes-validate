@@ -1,0 +1,16 @@
+{
+  "description": "ResourceRequest is a request for resources from one particular driver.",
+  "properties": {
+    "namedResources": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.resource.v1alpha2.NamedResourcesRequest",
+      "description": "NamedResources describes a request for resources with the named resources model."
+    },
+    "vendorParameters": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "description": "VendorParameters are arbitrary setup parameters for the requested resource. They are ignored while allocating a claim."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/resourcerequest/resource/v1alpha2"
+}

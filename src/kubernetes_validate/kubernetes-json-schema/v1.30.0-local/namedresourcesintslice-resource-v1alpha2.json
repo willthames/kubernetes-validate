@@ -1,0 +1,26 @@
+{
+  "description": "NamedResourcesIntSlice contains a slice of 64-bit integers.",
+  "properties": {
+    "ints": {
+      "description": "Ints is the slice of 64-bit integers.",
+      "items": {
+        "format": "int64",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "atomic"
+    }
+  },
+  "required": [
+    "ints"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/namedresourcesintslice/resource/v1alpha2"
+}
