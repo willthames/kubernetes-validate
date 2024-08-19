@@ -1,0 +1,23 @@
+{
+  "description": "EventSource contains information for an event.",
+  "properties": {
+    "component": {
+      "description": "Component from which the event is generated.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "host": {
+      "description": "Node name on which the event is generated.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/eventsource/v1"
+}

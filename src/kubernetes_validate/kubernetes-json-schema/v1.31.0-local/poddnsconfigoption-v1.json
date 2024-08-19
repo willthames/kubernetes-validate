@@ -1,0 +1,21 @@
+{
+  "description": "PodDNSConfigOption defines DNS resolver options of a pod.",
+  "properties": {
+    "name": {
+      "description": "Required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/poddnsconfigoption/v1"
+}
