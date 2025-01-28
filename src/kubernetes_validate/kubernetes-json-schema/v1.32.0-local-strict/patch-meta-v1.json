@@ -1,0 +1,7 @@
+{
+  "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/patch/meta/v1"
+}
