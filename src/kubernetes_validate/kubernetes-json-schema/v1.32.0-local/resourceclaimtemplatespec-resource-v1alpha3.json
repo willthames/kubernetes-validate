@@ -1,0 +1,19 @@
+{
+  "description": "ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.",
+  "properties": {
+    "metadata": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "description": "ObjectMeta may contain labels and annotations that will be copied into the ResourceClaim when creating it. No other fields are allowed and will be rejected during validation."
+    },
+    "spec": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.resource.v1alpha3.ResourceClaimSpec",
+      "description": "Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here."
+    }
+  },
+  "required": [
+    "spec"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/resourceclaimtemplatespec/resource/v1alpha3"
+}
