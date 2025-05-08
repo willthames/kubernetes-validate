@@ -1,0 +1,8 @@
+{
+  "description": "MicroTime is version of Time with microsecond level precision.",
+  "format": "date-time",
+  "type": "string",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/microtime/meta/v1"
+}
