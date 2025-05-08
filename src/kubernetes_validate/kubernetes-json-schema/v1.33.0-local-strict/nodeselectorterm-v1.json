@@ -1,0 +1,32 @@
+{
+  "description": "A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.",
+  "properties": {
+    "matchExpressions": {
+      "description": "A list of node selector requirements by node's labels.",
+      "items": {
+        "$ref": "/api/_definitions.json#/$defs/io.k8s.api.core.v1.NodeSelectorRequirement"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "atomic"
+    },
+    "matchFields": {
+      "description": "A list of node selector requirements by node's fields.",
+      "items": {
+        "$ref": "/api/_definitions.json#/$defs/io.k8s.api.core.v1.NodeSelectorRequirement"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "atomic"
+    }
+  },
+  "type": "object",
+  "x-kubernetes-map-type": "atomic",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/nodeselectorterm/v1"
+}
