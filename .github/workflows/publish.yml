@@ -15,9 +15,13 @@ jobs:
     steps:
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+      - name: get version
+        run: echo version=$(awk -F"'" '{ print $2}' src/kubernetes_validate/version.py)  >> $GITHUB_OUTPUT
+        id: version
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
+          build-args: VERSION=${{ steps.version.outputs.version}}
           context: "{{defaultContext}}"
           file: ./Dockerfile
           push: true

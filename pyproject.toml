@@ -13,7 +13,7 @@ keywords = ["kubernetes", "schema", "validate", "validator"]
 license = {text = "Apache"}
 dependencies = [
     'PyYAML',
-    'jsonschema',
+    'jsonschema>=4.23.0',
     'typing-extensions',
     'importlib-resources',
     'packaging',
