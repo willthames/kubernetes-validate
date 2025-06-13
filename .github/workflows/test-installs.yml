@@ -1,0 +1,51 @@
+name: test pip install kubernetes-validate
+
+on:
+  push:
+    branches:
+      - test-installs
+    paths-ignore:
+      - .github/**
+      - "*.md"
+  workflow_dispatch:
+
+jobs:
+  install-1-33-1:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup kubernetes-validate CLI
+        run: pip install kubernetes-validate==1.33.1
+
+  install-1-33-0:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup kubernetes-validate CLI
+        run: pip install kubernetes-validate==1.33.0
+
+  install-1-32-0:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup kubernetes-validate CLI
+        run: pip install kubernetes-validate==1.32.0
+
+  install-1-31-0:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup kubernetes-validate CLI
+        run: pip install kubernetes-validate==1.31.0
+
+  install-1-27-0:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup kubernetes-validate CLI
+        run: pip install kubernetes-validate==1.27.0
