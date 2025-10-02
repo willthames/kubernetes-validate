@@ -1,6 +1,0 @@
-{
-  "description": "JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to true for the boolean property.",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object",
-  "$id": "https://kubernetes.io/api/jsonschemapropsorbool/apiextensions/v1"
-}

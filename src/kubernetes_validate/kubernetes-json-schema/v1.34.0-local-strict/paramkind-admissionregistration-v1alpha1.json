@@ -1,0 +1,24 @@
+{
+  "description": "ParamKind is a tuple of Group Kind and Version.",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion is the API group version the resources belong to. In format of \"group/version\". Required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is the API kind the resources belong to. Required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "x-kubernetes-map-type": "atomic",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/paramkind/admissionregistration/v1alpha1"
+}

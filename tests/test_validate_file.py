@@ -11,25 +11,25 @@ def test_validate_resource_file():
 
 
 def test_validate_multi_resource_file():
-    rc = kubernetes_validate.validate_file(os.path.join(parent, 'kuard-all.yaml'), '1.22.0',
+    rc = kubernetes_validate.validate_file(os.path.join(parent, 'kuard-all.yaml'), '1.29.0',
                                            strict=False, quiet=True, no_warn=True)
     assert (rc == 1)
 
 
 def test_validate_strict_file():
-    rc = kubernetes_validate.validate_file(os.path.join(parent, 'kuard-extra-property.yaml'), '1.22.0',
+    rc = kubernetes_validate.validate_file(os.path.join(parent, 'kuard-extra-property.yaml'), '1.29.0',
                                            strict=True, quiet=True, no_warn=True)
     assert (rc == 1)
 
 
 def test_validate_invalid_file():
-    rc = kubernetes_validate.validate_file(os.path.join(parent, 'kuard-invalid-type.yaml'), '1.22.0',
+    rc = kubernetes_validate.validate_file(os.path.join(parent, 'kuard-invalid-type.yaml'), '1.29.0',
                                            strict=False, quiet=True, no_warn=True)
     assert (rc == 1)
 
 
 def test_validate_madeup_file():
-    rc = kubernetes_validate.validate_file(os.path.join(parent, 'kuard-made-up-kind.yaml'), '1.22.0',
+    rc = kubernetes_validate.validate_file(os.path.join(parent, 'kuard-made-up-kind.yaml'), '1.29.0',
                                            strict=False, quiet=True, no_warn=True)
     assert (rc == 0)
 
