@@ -5,6 +5,6 @@ ARG VERSION
 RUN apk add sed
 COPY entrypoint.sh /entrypoint.sh
 
-RUN pip install kubernetes-validate==$(VERSION)
+RUN pip install kubernetes-validate==${VERSION}
 
 ENTRYPOINT ["/entrypoint.sh"]
