@@ -1,0 +1,16 @@
+{
+  "description": "PodGroupPolicy defines the scheduling configuration for a PodGroup.",
+  "properties": {
+    "basic": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.scheduling.v1alpha1.BasicSchedulingPolicy",
+      "description": "Basic specifies that the pods in this group should be scheduled using standard Kubernetes scheduling behavior."
+    },
+    "gang": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.scheduling.v1alpha1.GangSchedulingPolicy",
+      "description": "Gang specifies that the pods in this group should be scheduled using all-or-nothing semantics."
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/podgrouppolicy/scheduling/v1alpha1"
+}

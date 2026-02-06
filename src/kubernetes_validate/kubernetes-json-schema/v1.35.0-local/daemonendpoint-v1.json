@@ -1,0 +1,19 @@
+{
+  "description": "DaemonEndpoint contains information about a single Daemon endpoint.",
+  "properties": {
+    "Port": {
+      "description": "Port number of the given endpoint.",
+      "format": "int32",
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "Port"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/daemonendpoint/v1"
+}

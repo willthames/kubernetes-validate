@@ -1,0 +1,24 @@
+{
+  "description": "PodGroup represents a set of pods with a common scheduling policy.",
+  "properties": {
+    "name": {
+      "description": "Name is a unique identifier for the PodGroup within the Workload. It must be a DNS label. This field is immutable.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "policy": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.scheduling.v1alpha1.PodGroupPolicy",
+      "description": "Policy defines the scheduling policy for this PodGroup."
+    }
+  },
+  "required": [
+    "name",
+    "policy"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/podgroup/scheduling/v1alpha1"
+}

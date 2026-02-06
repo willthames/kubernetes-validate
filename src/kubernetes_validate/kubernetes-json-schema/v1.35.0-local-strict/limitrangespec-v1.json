@@ -1,0 +1,23 @@
+{
+  "description": "LimitRangeSpec defines a min/max usage limit for resources that match on kind.",
+  "properties": {
+    "limits": {
+      "description": "Limits is the list of LimitRangeItem objects that are enforced.",
+      "items": {
+        "$ref": "/api/_definitions.json#/$defs/io.k8s.api.core.v1.LimitRangeItem"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "atomic"
+    }
+  },
+  "required": [
+    "limits"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/limitrangespec/v1"
+}

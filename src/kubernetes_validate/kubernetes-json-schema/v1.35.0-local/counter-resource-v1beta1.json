@@ -1,0 +1,15 @@
+{
+  "description": "Counter describes a quantity associated with a device.",
+  "properties": {
+    "value": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.api.resource.Quantity",
+      "description": "Value defines how much of a certain device counter is available."
+    }
+  },
+  "required": [
+    "value"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/counter/resource/v1beta1"
+}
