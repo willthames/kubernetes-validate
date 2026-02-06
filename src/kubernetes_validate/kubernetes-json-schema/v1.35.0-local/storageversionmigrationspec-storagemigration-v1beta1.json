@@ -1,0 +1,15 @@
+{
+  "description": "Spec of the storage version migration.",
+  "properties": {
+    "resource": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.GroupResource",
+      "description": "The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable."
+    }
+  },
+  "required": [
+    "resource"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/storageversionmigrationspec/storagemigration/v1beta1"
+}
