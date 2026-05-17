@@ -1,0 +1,27 @@
+{
+  "description": "WorkloadPodGroupTemplateReference references the PodGroupTemplate within the Workload object.",
+  "properties": {
+    "podGroupTemplateName": {
+      "description": "PodGroupTemplateName defines the PodGroupTemplate name within the Workload object.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "workloadName": {
+      "description": "WorkloadName defines the name of the Workload object.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "workloadName",
+    "podGroupTemplateName"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/workloadpodgrouptemplatereference/scheduling/v1alpha2"
+}

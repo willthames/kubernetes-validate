@@ -1,0 +1,19 @@
+{
+  "description": "TokenRequestStatus is the result of a token request.",
+  "properties": {
+    "expirationTimestamp": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "description": "expirationTimestamp is the time of expiration of the returned token."
+    },
+    "token": {
+      "description": "token is the opaque bearer token.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/tokenrequeststatus/authentication/v1"
+}

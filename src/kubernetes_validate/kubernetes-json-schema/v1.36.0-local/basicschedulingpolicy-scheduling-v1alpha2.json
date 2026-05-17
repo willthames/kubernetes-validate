@@ -1,0 +1,6 @@
+{
+  "description": "BasicSchedulingPolicy indicates that standard Kubernetes scheduling behavior should be used.",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/basicschedulingpolicy/scheduling/v1alpha2"
+}
