@@ -1,0 +1,7 @@
+{
+  "description": "SingleCompositeDisruptionMode means that individual children of a CompositePodGroup can be disrupted or preempted independently.",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/singlecompositedisruptionmode/scheduling/v1alpha3"
+}

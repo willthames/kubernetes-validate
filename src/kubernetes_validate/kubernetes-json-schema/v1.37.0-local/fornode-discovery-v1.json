@@ -1,0 +1,18 @@
+{
+  "description": "ForNode provides information about which nodes should consume this endpoint.",
+  "properties": {
+    "name": {
+      "description": "name represents the name of the node.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/fornode/discovery/v1"
+}

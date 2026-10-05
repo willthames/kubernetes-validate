@@ -1,0 +1,6 @@
+{
+  "description": "WorkloadPodGroupAllDisruptionMode indicates that all pods in the group must be disrupted together.",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/workloadpodgroupalldisruptionmode/scheduling/v1alpha3"
+}
