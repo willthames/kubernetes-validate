@@ -1,0 +1,6 @@
+{
+  "description": "AllDisruptionMode specifies that children can only be disrupted together.",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/alldisruptionmode/scheduling/v1beta1"
+}

@@ -1,0 +1,19 @@
+{
+  "description": "EvictionRequestTarget contains a reference to an object that should be evicted.",
+  "properties": {
+    "pod": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.lifecycle.v1alpha1.EvictionRequestPodReference",
+      "description": "pod references a pod that is subject to eviction/termination. Pods that are part of a PodGroup (.spec.schedulingGroup is set) are not supported."
+    }
+  },
+  "type": "object",
+  "x-kubernetes-unions": [
+    {
+      "fields-to-discriminateBy": {
+        "pod": "Pod"
+      }
+    }
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/evictionrequesttarget/lifecycle/v1alpha1"
+}

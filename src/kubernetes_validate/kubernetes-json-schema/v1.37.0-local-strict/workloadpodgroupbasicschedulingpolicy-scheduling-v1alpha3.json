@@ -1,0 +1,7 @@
+{
+  "description": "WorkloadPodGroupBasicSchedulingPolicy indicates standard Kubernetes scheduling behavior.",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/workloadpodgroupbasicschedulingpolicy/scheduling/v1alpha3"
+}

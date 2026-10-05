@@ -1,0 +1,7 @@
+{
+  "description": "WorkloadPodGroupSingleDisruptionMode indicates that individual pods can be disrupted independently.",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/workloadpodgroupsingledisruptionmode/scheduling/v1alpha3"
+}

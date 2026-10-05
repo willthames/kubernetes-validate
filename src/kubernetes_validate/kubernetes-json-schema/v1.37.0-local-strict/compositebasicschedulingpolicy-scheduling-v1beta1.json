@@ -1,0 +1,7 @@
+{
+  "description": "CompositeBasicSchedulingPolicy indicates that the groups belonging to the composite group should be scheduled independently.",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "https://kubernetes.io/api/compositebasicschedulingpolicy/scheduling/v1beta1"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "WorkloadPodGroupDisruptionMode defines how individual pods within a group can be disrupted. Exactly one mode must be set.",
+  "properties": {
+    "all": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.scheduling.v1alpha3.WorkloadPodGroupAllDisruptionMode",
+      "description": "all specifies that all pods in the group must be disrupted together."
+    },
+    "single": {
+      "$ref": "/api/_definitions.json#/$defs/io.k8s.api.scheduling.v1alpha3.WorkloadPodGroupSingleDisruptionMode",
+      "description": "single specifies that pods can be disrupted independently from each other."
+    }
+  },
+  "type": "object",
+  "x-kubernetes-unions": [
+    {
+      "fields-to-discriminateBy": {
+        "all": "All",
+        "single": "Single"
+      }
+    }
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/workloadpodgroupdisruptionmode/scheduling/v1alpha3"
+}

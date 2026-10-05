@@ -1,0 +1,29 @@
+{
+  "description": "StorageHealth contains storage backend health reported by a CSI driver on a node.",
+  "properties": {
+    "healthConditions": {
+      "description": "healthConditions are the adverse storage backend conditions reported by the CSI driver. At most 16 conditions may be reported.",
+      "items": {
+        "$ref": "/api/_definitions.json#/$defs/io.k8s.api.storage.v1.StorageHealthCondition"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-list-type": "atomic"
+    },
+    "name": {
+      "description": "name is the CSI driver name, matching CSINodeDriver.name.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubernetes.io/api/storagehealth/storage/v1"
+}
